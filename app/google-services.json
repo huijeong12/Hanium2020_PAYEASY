@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "910576850445",
+    "firebase_url": "https://pay-easy-284307.firebaseio.com",
+    "project_id": "pay-easy-284307",
+    "storage_bucket": "pay-easy-284307.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910576850445:android:73e95fb6794f27fca82744",
+        "android_client_info": {
+          "package_name": "com.kftc.openbankingsample2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "910576850445-o17ent1p8hf113qsveh83kns95qcslck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBToOqQWM1URRyRZEu5Kg0fEt89eXye66I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "910576850445-o17ent1p8hf113qsveh83kns95qcslck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

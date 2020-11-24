@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 /*
     개발환경
@@ -31,6 +32,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.firebase:firebase-database:16.0.4'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
@@ -113,4 +115,11 @@ dependencies {
      *  참고사항 : 국제전화코드를 제거하거나 변형할때 유용
      */
     implementation 'com.googlecode.libphonenumber:libphonenumber:8.8.3'
+
+    // firebase
+    implementation platform('com.google.firebase:firebase-bom:26.1.0')
+    implementation 'com.google.firebase:firebase-analytics'
+
+    // firebase real-time database
+    implementation 'com.google.firebase:firebase-database'
 }
