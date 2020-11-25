@@ -35,7 +35,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
-                    android:text="카메"
+                    android:text="카메라"
                     android:textSize="40px" />
 
                 <Button
@@ -110,32 +110,34 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/border_result_info_top"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
                 android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="50dp"
+                android:background="@drawable/border_result_info_top"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
+
                 <TextView
-                    android:layout_weight="1"
                     style="@style/FormLabel01"
                     android:layout_width="0dp"
                     android:layout_marginLeft="30dp"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="메모"
-                    android:textSize="50px"/>
+                    android:textSize="50px" />
+
                 <EditText
                     android:id="@+id/etItemMemo"
-                    android:layout_width="0dp"
-                    android:maxLines="1"
-                    android:textIsSelectable="true"
-                    android:layout_weight="2"
                     style="@style/FormValue01"
-                    android:singleLine="true" />
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textIsSelectable="true" />
             </LinearLayout>
 
         </LinearLayout>
