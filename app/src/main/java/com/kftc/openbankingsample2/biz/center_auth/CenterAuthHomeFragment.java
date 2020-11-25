@@ -13,6 +13,7 @@ import com.kftc.openbankingsample2.R;
 import com.kftc.openbankingsample2.biz.center_auth.api.CenterAuthAPIFragment;
 import com.kftc.openbankingsample2.biz.center_auth.auth.CenterAuthFragment;
 import com.kftc.openbankingsample2.biz.main.HomeFragment;
+import com.kftc.openbankingsample2.biz.main.MenuFragment;
 
 /**
  * 센터인증 메인화면
@@ -52,6 +53,8 @@ public class CenterAuthHomeFragment extends AbstractCenterAuthMainFragment {
         // API 거래
         view.findViewById(R.id.btnAPICallMenu).setOnClickListener(v -> startFragment(CenterAuthAPIFragment.class, args, R.string.fragment_id_center_api_call));
 
+        // 메뉴판
+        view.findViewById(R.id.btnCallMenu).setOnClickListener(v -> startFragment(MenuFragment.class, args, R.string.fragment_menu));
     }
 
     @Override
