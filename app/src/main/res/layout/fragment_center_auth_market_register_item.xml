@@ -1,0 +1,151 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--서브타이틀-->
+    <LinearLayout android:id="@+id/llSubTitle" style="@style/SubTitleLayout">
+        <TextView android:id="@+id/tvSubTitle" style="@style/SubTitleText"
+            android:text="메뉴 정보를 입력해주세요."/>
+    </LinearLayout>
+
+    <!--메인-->
+    <ScrollView android:id="@+id/svMainScroll" style="@style/MainScrollView">
+        <LinearLayout android:id="@+id/llMainLayout" style="@style/MainLayout">
+
+            <ImageView
+                android:id="@+id/imgItem"
+                android:layout_width="wrap_content"
+                android:layout_height="227dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:src="@drawable/plus" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btnTakePicture"
+                    style="@style/Button01"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="카메"
+                    android:textSize="40px" />
+
+                <Button
+                    android:id="@+id/btnUploadPicture"
+                    style="@style/Button01"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:text="앨범"
+                    android:textSize="40px"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/border_result_info_top"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    style="@style/FormLabel01"
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center_vertical"
+                    android:text="이름"
+                    android:textSize="50px"/>
+                <EditText
+                    android:id="@+id/etItemName"
+                    android:layout_width="0dp"
+                    android:maxLines="1"
+                    android:textIsSelectable="true"
+                    android:layout_weight="2"
+                    style="@style/FormValue01"
+                    android:singleLine="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/border_result_info_top"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    style="@style/FormLabel01"
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center_vertical"
+                    android:text="가격"
+                    android:textSize="50px"/>
+                <EditText
+                    android:id="@+id/etItemPrice"
+                    android:layout_width="0dp"
+                    android:maxLines="1"
+                    android:textIsSelectable="true"
+                    android:layout_weight="2"
+                    style="@style/FormValue01"
+                    android:singleLine="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/border_result_info_top"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    style="@style/FormLabel01"
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center_vertical"
+                    android:text="메모"
+                    android:textSize="50px"/>
+                <EditText
+                    android:id="@+id/etItemMemo"
+                    android:layout_width="0dp"
+                    android:maxLines="1"
+                    android:textIsSelectable="true"
+                    android:layout_weight="2"
+                    style="@style/FormValue01"
+                    android:singleLine="true" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!--하단버튼-->
+    <LinearLayout android:id="@+id/llBottomButton" style="@style/BottomButtonLayout">
+        <Button android:id="@+id/btnCancel" style="@style/BottomCancelButton"/>
+        <Button android:id="@+id/btnRegisterItem" style="@style/BottomNextButton" />
+    </LinearLayout>
+
+</RelativeLayout>
+
