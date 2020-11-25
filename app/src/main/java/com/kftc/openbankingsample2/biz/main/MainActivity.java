@@ -9,6 +9,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.kftc.openbankingsample2.R;
 
 /**
@@ -52,6 +54,27 @@ public class MainActivity extends AbstractMainActivity {
                 Log.w("pay-easy", "Failed to read value.", error.toException());
             }
         });
+
+        // firebase - cloud storage
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageReference = storage.getReference();
+
+        // read image from storage
+        StorageReference imagesRef = storageReference.child("images");
+
+        String fileName = "test.png";
+        StorageReference testRef = imagesRef.child(fileName);
+
+        if (testRef != null) {
+            String path = testRef.getPath();
+            String name = testRef.getName();
+
+
+            Log.d("pay-easy", "File path is: " + path + " \tFile name is: " + name);
+        }
+
+        // write image into storage
+
     }
 
     private void initView() {
