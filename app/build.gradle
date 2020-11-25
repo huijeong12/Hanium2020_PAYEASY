@@ -122,4 +122,7 @@ dependencies {
 
     // firebase real-time database
     implementation 'com.google.firebase:firebase-database'
+
+    // firebase cloud storage
+    implementation 'com.google.firebase:firebase-storage'
 }
