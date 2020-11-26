@@ -48,8 +48,8 @@ public class MenuFragment extends AbstractCenterAuthMainFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_menu, container, false);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true); // 리사이클러뷰 기존성능 강화
+        recyclerView = (RecyclerView) view.findViewById(R.id.list_menu);
+        //recyclerView.setHasFixedSize(true); // 리사이클러뷰 기존성능 강화
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         arrayList = new ArrayList<>(); // User 객체를 담을 어레이 리스트 (어댑터쪽으로)
@@ -64,6 +64,7 @@ public class MenuFragment extends AbstractCenterAuthMainFragment {
                 arrayList.clear();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     menuList menuList = snapshot.getValue(menuList.class); // 만들어뒀던 User 객체에 데이터를 담는다.
+                    Log.d("db value", menuList.getMenuName());
                     arrayList.add(menuList); // 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
                 }
                 adapter.notifyDataSetChanged(); // 리스트 저장 및 새로고침해야 반영이 됨
