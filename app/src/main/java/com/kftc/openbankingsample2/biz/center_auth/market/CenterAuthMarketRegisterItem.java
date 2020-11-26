@@ -9,20 +9,30 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -56,10 +66,11 @@ public class CenterAuthMarketRegisterItem extends AbstractCenterAuthMainFragment
     EditText etItemPrice;
     EditText etItemMemo;
 
+    Button btn;
+
     final static int TAKE_PICTURE = 1;
     final static int UPLOAD_PHOTO = 10;
 
-    private String path;
     private Uri imgUri;
 
     // firebase storage reference
@@ -70,7 +81,8 @@ public class CenterAuthMarketRegisterItem extends AbstractCenterAuthMainFragment
     private FirebaseDatabase database;
     private DatabaseReference databaseRef;
 
-    String items;
+    private String[] strings;
+    private String[] itemInfo;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,7 +91,7 @@ public class CenterAuthMarketRegisterItem extends AbstractCenterAuthMainFragment
         args = getArguments();
         if (args == null) args = new Bundle();
 
-        items = args.getString("items");
+        strings = args.getStringArray("key");
 
         // 스토리지 레퍼런스 초기화
         storage = FirebaseStorage.getInstance();
@@ -88,14 +100,12 @@ public class CenterAuthMarketRegisterItem extends AbstractCenterAuthMainFragment
         // 데이터베이스 레퍼런스 초기화
         database = FirebaseDatabase.getInstance();
         databaseRef = database.getReference().child("market_info").child("hanium2020");
-
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_center_auth_market_register_item, container, false);
-        Log.d("pay-easy", "items = " + items);
         setCameraPermission();
         initView();
         return view;
@@ -124,12 +134,21 @@ public class CenterAuthMarketRegisterItem extends AbstractCenterAuthMainFragment
     }
 
     void initView() {
+        if (strings[0].equals("E")) {
+            getItemPicture();
+            getItemInfo();
+        }
 
         imageView = (ImageView)view.findViewById(R.id.imgItem);
+        registerForContextMenu(view);
 
-        view.findViewById(R.id.btnTakePicture).setOnClickListener(v -> takePictureIntent());
-
-        view.findViewById(R.id.btnUploadPicture).setOnClickListener(v -> uploadPictureIntent());
+        btn = (Button)view.findViewById(R.id.pictureOption);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view.showContextMenu();
+            }
+        });
 
         etItemName = view.findViewById(R.id.etItemName);
         etItemPrice = view.findViewById(R.id.etItemPrice);
@@ -137,15 +156,81 @@ public class CenterAuthMarketRegisterItem extends AbstractCenterAuthMainFragment
 
         view.findViewById(R.id.btnRegisterItem).setOnClickListener(v -> imageIntoStorage());
 
-        view.findViewById(R.id.btnCancel).setOnClickListener(v -> onBackPressed());
+//        view.findViewById(R.id.btnCancel).setOnClickListener(v -> onBackPressed());
+        view.findViewById(R.id.btnCancel).setOnClickListener(v -> {
+
+        });
+    }
+
+    void getItemPicture() {
+        StorageReference imgRef = storageRef.child("menu" + strings[1] + ".jpg");
+
+        imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(getActivity().getApplicationContext())
+                        .load(uri)
+                        .into(imageView);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, "실패", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    void getItemInfo() {
+        DatabaseReference itemRef = databaseRef.child("Menu").child("menu" + strings[1]);
+
+        itemRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.d("pay-easy", "menu" + strings[1] + " info:");
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Log.d("pay-easy",  snapshot.getKey() + " = " + snapshot.getValue().toString());
+
+                    if (snapshot.getKey().equals("Name"))
+                        etItemName.setText(snapshot.getValue().toString());
+
+                    if (snapshot.getKey().equals("Price"))
+                        etItemPrice.setText(snapshot.getValue().toString());
+
+                    if (snapshot.getKey().equals("Memo"))
+                        etItemMemo.setText(snapshot.getValue().toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        MenuInflater menuInflater = getActivity().getMenuInflater();
+        menuInflater.inflate(R.menu.menu_camera_file, menu);
 
     }
 
-    private File createFile() {
-        String fileName = "menu" + items + ".jpg";
-        File imageDir = context.getDir("profileImages", Context.MODE_PRIVATE);
+    @Override
+    public boolean onContextItemSelected(@NonNull  MenuItem item) {
+        int itemId = item.getItemId();
 
-        return new File(imageDir, fileName);
+        if (itemId == R.id.chooseCamera) {
+            takePictureIntent();
+            return true;
+        }
+        else if (itemId == R.id.chooseFile) {
+            uploadPictureIntent();
+            return true;
+        }
+
+        return false;
     }
 
     private File createImageFile() throws IOException {
@@ -160,7 +245,7 @@ public class CenterAuthMarketRegisterItem extends AbstractCenterAuthMainFragment
         );
 
         // Save a file: path for use with ACTION_VIEW intents
-        path = image.getAbsolutePath();
+        String path = image.getAbsolutePath();
         return image;
     }
 
@@ -225,7 +310,7 @@ public class CenterAuthMarketRegisterItem extends AbstractCenterAuthMainFragment
 
     private void imageIntoStorage() {
 
-        String filename = "menu" + items + ".jpg";
+        String filename = "menu" + strings[1] + ".jpg";
         StorageReference newImgStorageRef = storageRef.child(filename);
 
         UploadTask uploadTask = newImgStorageRef.putFile(imgUri);
@@ -247,14 +332,14 @@ public class CenterAuthMarketRegisterItem extends AbstractCenterAuthMainFragment
 
     private void menuInfoIntoDatabase(String filename) {
 
-        DatabaseReference newItemRef = databaseRef.child("Menu").child("menu" + items);
+        DatabaseReference newItemRef = databaseRef.child("Menu").child("menu" + strings[1]);
 
         newItemRef.child("Name").setValue(etItemName.getText().toString());
         newItemRef.child("Photo").setValue(filename);
         newItemRef.child("Price").setValue(etItemPrice.getText().toString());
         newItemRef.child("Memo").setValue(etItemMemo.getText().toString());
 
-        databaseRef.child("numberOfItem").setValue(items);
+        databaseRef.child("numberOfItem").setValue(strings[1]);
 
         goNext();
     }

@@ -24,9 +24,12 @@ import com.kftc.openbankingsample2.biz.center_auth.auth.CenterAuthFragment;
 import com.kftc.openbankingsample2.biz.center_auth.market.CenterAuthMarketRegisterItem;
 import com.kftc.openbankingsample2.biz.main.HomeFragment;
 
+import java.util.Random;
+
 /**
  * 센터인증 메인화면
  */
+
 public class CenterAuthHomeFragment extends AbstractCenterAuthMainFragment {
 
     // context
@@ -38,7 +41,7 @@ public class CenterAuthHomeFragment extends AbstractCenterAuthMainFragment {
     // data
     private Bundle args;
 
-    Object object;
+    FirebaseDatabase database;
     String items;
 
     @Override
@@ -47,6 +50,8 @@ public class CenterAuthHomeFragment extends AbstractCenterAuthMainFragment {
         context = getContext();
         args = getArguments();
         if (args == null) args = new Bundle();
+
+        database = FirebaseDatabase.getInstance();
     }
 
     @Nullable
@@ -65,22 +70,33 @@ public class CenterAuthHomeFragment extends AbstractCenterAuthMainFragment {
         // API 거래
         view.findViewById(R.id.btnAPICallMenu).setOnClickListener(v -> startFragment(CenterAuthAPIFragment.class, args, R.string.fragment_id_center_api_call));
 
-        view.findViewById(R.id.btnRegisterItem).setOnClickListener(v -> editArgs());
+        view.findViewById(R.id.btnRegisterItem).setOnClickListener(v -> editArgs("R"));
+        view.findViewById(R.id.btnEditItem).setOnClickListener(v -> editArgs("E"));
     }
 
-    void editArgs() {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+    void editArgs(String isEditOrRegister) {
+
         DatabaseReference ref = database.getReference().child("market_info").child("hanium2020").child("numberOfItem");
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String str = dataSnapshot.getValue().toString();
-                Log.d("pay-easy", "str = " + str);
-                str = Integer.toString(Integer.valueOf(str) + 1);
 
-                args.putString("items", str);
+                items = dataSnapshot.getValue().toString();
+                String[] strings = new String[2];
+                strings[0] = isEditOrRegister;
 
+                if (isEditOrRegister == "E") {
+                    Random random = new Random();
+                    items = Integer.toString(random.nextInt(Integer.valueOf(items)) + 1);
+                }
+
+                else {
+                    items = Integer.toString(Integer.valueOf(items) + 1);
+                }
+                strings[1] = items;
+
+                args.putStringArray("key", strings);
                 startFragment(CenterAuthMarketRegisterItem.class, args, R.string.fragment_id_register_item);
             }
 
