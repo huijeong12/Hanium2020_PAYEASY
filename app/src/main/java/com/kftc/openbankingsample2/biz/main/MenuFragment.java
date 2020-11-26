@@ -63,9 +63,20 @@ public class MenuFragment extends AbstractCenterAuthMainFragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 arrayList.clear();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    menuList menuList = snapshot.getValue(menuList.class); // 만들어뒀던 User 객체에 데이터를 담는다.
-                    Log.d("db value", menuList.getMenuName());
-                    arrayList.add(menuList); // 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
+                    menuList menus = new menuList();
+
+                    String price = snapshot.child("Price").getValue().toString();
+                    String name = snapshot.child("Name").getValue().toString();
+                    String photo = snapshot.child("Photo").toString();
+
+                    menus.setMenuName(name);
+                    menus.setPrice(price);
+                    menus.setProfile(photo);
+
+                    arrayList.add(menus);
+
+                    Object value = snapshot.getValue();
+                    Log.d("price value: ", value.toString());
                 }
                 adapter.notifyDataSetChanged(); // 리스트 저장 및 새로고침해야 반영이 됨
             }

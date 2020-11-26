@@ -18,4 +18,16 @@ public class menuList {
     public String getPrice(){
         return price;
     }
+
+    public void setProfile(String pro) {
+        this.profile = pro;
+    }
+
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
+    }
+
+    public void setPrice(String price){
+        this.price = price;
+    }
 }
