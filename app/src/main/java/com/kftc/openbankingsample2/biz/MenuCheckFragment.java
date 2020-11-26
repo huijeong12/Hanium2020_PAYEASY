@@ -1,0 +1,167 @@
+package com.kftc.openbankingsample2.biz;
+
+import android.content.Context;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.text.Layout;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.kftc.openbankingsample2.R;
+import com.kftc.openbankingsample2.biz.center_auth.AbstractCenterAuthMainFragment;
+import com.kftc.openbankingsample2.biz.center_auth.CenterAuthConst;
+import com.kftc.openbankingsample2.biz.center_auth.api.CenterAuthAPIFragment;
+import com.kftc.openbankingsample2.biz.center_auth.api.user_me.CenterAuthAPIUserMeResultAdapter;
+import com.kftc.openbankingsample2.biz.center_auth.util.CenterAuthUtils;
+import com.kftc.openbankingsample2.common.data.ApiCallUserMeResponse;
+import com.kftc.openbankingsample2.common.util.Utils;
+import com.kftc.openbankingsample2.common.util.view.recyclerview.KmRecyclerViewDividerHeight;
+
+import java.util.ArrayList;
+
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link MenuCheckFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class MenuCheckFragment extends AbstractCenterAuthMainFragment {
+
+    // context
+    private Context context;
+
+    // view
+    private View view;
+    private RecyclerView recyclerView;
+    private MenuCheckAdapter adapter;
+    ArrayList<MenuCheckItem> mList = new ArrayList<MenuCheckItem>();
+
+    // data
+    private Bundle args;
+    private ApiCallUserMeResponse result;
+
+    public MenuCheckFragment() {
+        // Required empty public constructor
+    }
+
+
+    public static MenuCheckFragment newInstance(String param1, String param2) {
+        MenuCheckFragment fragment = new MenuCheckFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        context = getContext();
+        args = getArguments();
+        if (args == null) args = new Bundle();
+
+        //result = args.getParcelable("result");
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        view = inflater.inflate(R.layout.fragment_menu_check, container, false);
+        initView();
+        return view;
+    }
+
+    void initView(){
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.addItemDecoration(new KmRecyclerViewDividerHeight(10));
+
+        view.findViewById(R.id.btnNext).setOnClickListener(v -> goNext());
+
+        initList();
+        initData();
+
+        view.findViewById(R.id.btnCancel).setOnClickListener(v -> onBackPressed());
+       // view.findViewById(R.id.btnNext).setOnClickListener();
+
+    }
+
+    void initList(){
+        String temp = "메뉴1 3000 5#메뉴2 5000 2#메뉴3 1000 3#메뉴4 2000 10#메뉴5 10000 1#메뉴6 1200 3";
+        // mList 할당
+        // addItem(getDrawable(R.drawable.ic_account_box_black_36dp), "Box", "Account Box Black 36dp") ;
+        // args로 데이터 받고, 그 데이터 정리해서 mList에 넣기
+        String[] array = temp.split("#");
+
+        for (int i = 0; i<array.length; i++){
+            String[] array2 = array[i].split(" ");
+            addItem(array2[0], array2[1], array2[2]);
+        }
+    }
+
+    public void addItem(String info, String price, String count) {
+        MenuCheckItem item = new MenuCheckItem();
+
+        item.setInfo(info);
+        item.setPrice(price);
+        item.setCount(count);
+
+        mList.add(item);
+    }
+
+    void initData() {
+
+        // 리사이클러뷰에 어댑터 설정
+        adapter = new MenuCheckAdapter(mList, new MenuCheckAdapter.MyAdapterListener() {
+            @Override
+            public void plusBtnOnclick(View v, int position) {
+                Log.d("ming", "plus button on clicked");
+                EditText editText;
+                    View menuItem = recyclerView.getLayoutManager().findViewByPosition(position);
+                    editText = menuItem.findViewById(R.id.orderMenuCount);
+
+                    String str = editText.getText().toString();
+                    Log.d("edittext", str);
+                    int menuCountText=Integer.parseInt(str);
+
+                    menuCountText++;
+                    str = Integer.toString(menuCountText);
+                    editText.setText(str);
+
+            }
+
+            @Override
+            public void minusBtnOnclick(View v, int position) {
+                Log.d("ming", "minus button on clicked");
+                EditText editText;
+                View menuItem = recyclerView.getLayoutManager().findViewByPosition(position);
+                editText = menuItem.findViewById(R.id.orderMenuCount);
+
+                String str = editText.getText().toString();
+                Log.d("edittext", str);
+                int menuCountText=Integer.parseInt(str);
+
+                if (menuCountText == 0){
+                    return;
+                }
+                menuCountText--;
+                str = Integer.toString(menuCountText);
+                editText.setText(str);
+            }
+        });
+        recyclerView.setAdapter(adapter);
+
+    }
+
+    void goNext() {
+        //startFragment(Fragment.class, null, R.string.fragment_id_center_api_call);
+    }
+}
