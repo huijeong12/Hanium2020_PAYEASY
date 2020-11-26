@@ -90,7 +90,6 @@ public class MenuCheckFragment extends AbstractCenterAuthMainFragment {
         initData();
 
         view.findViewById(R.id.btnCancel).setOnClickListener(v -> onBackPressed());
-       // view.findViewById(R.id.btnNext).setOnClickListener();
 
     }
 
