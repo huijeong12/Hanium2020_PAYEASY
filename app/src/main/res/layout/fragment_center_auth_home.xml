@@ -11,15 +11,8 @@
 </LinearLayout>
 
 <!--메인-->
-
-    <!--하단버튼-->
-    <ScrollView
-        android:id="@+id/svMainScroll"
-        style="@style/MainScrollView">
-
-        <LinearLayout
-            android:id="@+id/llMainLayout"
-            style="@style/MainLayout">
+<ScrollView android:id="@+id/svMainScroll" style="@style/MainScrollView">
+<LinearLayout android:id="@+id/llMainLayout" style="@style/MainLayout">
 
     <Button
         android:layout_marginTop="50dp"
@@ -79,6 +72,29 @@
         android:text="메뉴 주문받기"
         android:layout_marginTop="20dp"/>
 
+    <Button
+        android:id="@+id/btnRegisterItem"
+        style="@style/Button01"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:text="메뉴 등록"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btnEditItem"
+        style="@style/Button01"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:text="메뉴 수정"
+        android:layout_marginTop="20dp"/>
 
 </LinearLayout>
 </ScrollView>

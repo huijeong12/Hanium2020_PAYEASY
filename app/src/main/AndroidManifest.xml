@@ -2,40 +2,51 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kftc.openbankingsample2">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <uses-permission android:name="android.permission.CAMERA"/> <!--카메라 권한-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/> <!--파일 읽기 권한-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> <!--파일 쓰기 권한-->
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
+
     <application
-        android:name=".common.application.AppData"
+        android:name="com.kftc.openbankingsample2.common.application.AppData"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".biz.main.MenuActivity"></activity>
-        <activity
-            android:name=".biz.main.IntroActivity"
+
+        <activity android:name="com.kftc.openbankingsample2.biz.main.IntroActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="openbanking"
-                    android:scheme="kftc" />
+                <data android:scheme="kftc" android:host="openbanking"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".biz.main.MainActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
-    </application>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
+        <activity android:name="com.kftc.openbankingsample2.biz.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"/>
+
+        <provider
+            android:authorities="com.kftc.openbankingsample2"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
+
+
+    </application>
 
 </manifest>

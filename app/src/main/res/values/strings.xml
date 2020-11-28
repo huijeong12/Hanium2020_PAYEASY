@@ -7,6 +7,9 @@
     <string name="fragment_log_in" translatable="false">로그인</string>
 
 
+    <string name="fragment_id_register_item" translatable="false">메뉴 정보</string>
+    <string name="menu_camera_file" translatable="false">사진 </string>
+
     <string name="fragment_id_navi" translatable="false">navigation</string>
     <string name="fragment_id_main" translatable="false">오픈뱅킹샘플</string>
     <string name="fragment_id_home" translatable="false">오픈뱅킹샘플</string>
