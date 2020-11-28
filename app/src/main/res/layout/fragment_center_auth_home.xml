@@ -21,13 +21,13 @@
             android:id="@+id/llMainLayout"
             style="@style/MainLayout">
 
-            <Button
-                android:id="@+id/btnAuthToken"
-                style="@style/Button01"
-                android:layout_width="280dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="50dp"
-                android:text="계좌등록" />
+    <Button
+        android:layout_marginTop="50dp"
+        android:id="@+id/btnAuthToken"
+        style="@style/Button01"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:text="계좌등록"/>
 
             <Button
                 android:id="@+id/btnAPICallMenu"
@@ -67,10 +67,11 @@
                 android:text="로그인" />
 
 
-        </LinearLayout>
-    </ScrollView>
+</LinearLayout>
+</ScrollView>
 
-    <LinearLayout android:id="@+id/llBottomButton" style="@style/BottomButtonLayout" android:visibility="gone">
+<!--하단버튼-->
+<LinearLayout android:id="@+id/llBottomButton" style="@style/BottomButtonLayout" android:visibility="gone">
     <Button android:id="@+id/btnCancel" style="@style/BottomCancelButton"/>
     <Button android:id="@+id/btnNext" style="@style/BottomNextButton"/>
 </LinearLayout>

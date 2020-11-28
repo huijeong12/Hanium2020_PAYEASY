@@ -59,6 +59,8 @@ public class CenterAuthHomeFragment extends AbstractCenterAuthMainFragment {
 
         // 로그인
         view.findViewById(R.id.btnCallLogin).setOnClickListener(v -> startFragment(LogInFragment.class, args, R.string.fragment_log_in));
+        // 메뉴판
+        view.findViewById(R.id.btnCallMenu).setOnClickListener(v -> startFragment(MenuFragment.class, args, R.string.fragment_menu));
     }
 
     @Override
