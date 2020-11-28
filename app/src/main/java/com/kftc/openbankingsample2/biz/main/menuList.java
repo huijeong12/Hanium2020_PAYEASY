@@ -1,5 +1,7 @@
 package com.kftc.openbankingsample2.biz.main;
 
+import android.widget.ImageView;
+
 public class menuList {
     private String profile;
     private String menuName;
@@ -18,6 +20,7 @@ public class menuList {
     public String getPrice(){
         return price;
     }
+
 
     public void setProfile(String pro) {
         this.profile = pro;

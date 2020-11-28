@@ -83,7 +83,7 @@ public class MenuFragment extends AbstractCenterAuthMainFragment {
 
                     String price = snapshot.child("Price").getValue().toString();
                     String name = snapshot.child("Name").getValue().toString();
-                    String photo = snapshot.child("Photo").toString();
+                    String photo = snapshot.child("Photo").getValue().toString();
 
                     menus.setMenuName(name);
                     menus.setPrice(price);
