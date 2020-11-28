@@ -11,46 +11,66 @@
 </LinearLayout>
 
 <!--메인-->
-<ScrollView android:id="@+id/svMainScroll" style="@style/MainScrollView">
-<LinearLayout android:id="@+id/llMainLayout" style="@style/MainLayout">
 
-    <Button
-        android:layout_marginTop="50dp"
-        android:id="@+id/btnAuthToken"
-        style="@style/Button01"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:text="계좌등록"/>
+    <!--하단버튼-->
+    <ScrollView
+        android:id="@+id/svMainScroll"
+        style="@style/MainScrollView">
 
-    <Button
-        android:id="@+id/btnAPICallMenu"
-        style="@style/Button01"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:text="API 거래 기능"
-        android:layout_marginTop="20dp"/>
+        <LinearLayout
+            android:id="@+id/llMainLayout"
+            style="@style/MainLayout">
 
-    <Button
-        android:id="@+id/btnCheckMenu"
-        style="@style/Button01"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:text="메뉴체크"
-        android:layout_marginTop="20dp"/>
+            <Button
+                android:id="@+id/btnAuthToken"
+                style="@style/Button01"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="50dp"
+                android:text="계좌등록" />
 
-</LinearLayout>
-</ScrollView>
+            <Button
+                android:id="@+id/btnAPICallMenu"
+                style="@style/Button01"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="API 거래 기능" />
 
-<!--하단버튼-->
-<LinearLayout android:id="@+id/llBottomButton" style="@style/BottomButtonLayout" android:visibility="gone">
+            <Button
+                android:id="@+id/btnCallMenu"
+                style="@style/Button01"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="메뉴판" />
+
+
+            <Button
+                android:id="@+id/btnCallLogin"
+                style="@style/Button01"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="로그인" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout android:id="@+id/llBottomButton" style="@style/BottomButtonLayout" android:visibility="gone">
     <Button android:id="@+id/btnCancel" style="@style/BottomCancelButton"/>
     <Button android:id="@+id/btnNext" style="@style/BottomNextButton"/>
 </LinearLayout>

@@ -2,6 +2,8 @@
     <string name="app_name" translatable="false">오픈뱅킹샘플</string>
 
     <string name="fragment_id_manu_check" translatable="false">주문 확인</string>
+    <string name="fragment_log_in" translatable="false">로그인</string>
+
 
     <string name="fragment_id_navi" translatable="false">navigation</string>
     <string name="fragment_id_main" translatable="false">오픈뱅킹샘플</string>
