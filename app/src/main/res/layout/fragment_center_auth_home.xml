@@ -55,7 +55,7 @@
 
 
             <Button
-                android:id="@+id/btnCallLogin"
+                android:id="@+id/btnCallMenuCheck"
                 style="@style/Button01"
                 android:layout_width="280dp"
                 android:layout_height="50dp"
@@ -64,7 +64,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="로그인" />
+                android:text="메뉴 확인" />
 
 
 </LinearLayout>

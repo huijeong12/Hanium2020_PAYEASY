@@ -54,11 +54,9 @@ public class CenterAuthHomeFragment extends AbstractCenterAuthMainFragment {
         // API 거래
         view.findViewById(R.id.btnAPICallMenu).setOnClickListener(v -> startFragment(CenterAuthAPIFragment.class, args, R.string.fragment_id_center_api_call));
 
-        // 메뉴판
-        //view.findViewById(R.id.btnCallMenu).setOnClickListener(v -> startFragment(MenuFragment.class, args, R.string.fragment_id_m));
+        // 메뉴 확인
+        view.findViewById(R.id.btnCallMenuCheck).setOnClickListener(v -> startFragment(MenuCheckFragment.class, args, R.string.fragment_id_manu_check));
 
-        // 로그인
-        view.findViewById(R.id.btnCallLogin).setOnClickListener(v -> startFragment(LogInFragment.class, args, R.string.fragment_log_in));
         // 메뉴판
         view.findViewById(R.id.btnCallMenu).setOnClickListener(v -> startFragment(MenuFragment.class, args, R.string.fragment_menu));
     }
