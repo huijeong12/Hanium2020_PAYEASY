@@ -55,7 +55,8 @@
                 style="@style/BottomQRButton"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
-                android:text="QR코드\n 생성" />
+                android:text="QR코드\n 생성"
+                android:layout_marginBottom="30dp"/>
 
 
         </LinearLayout>

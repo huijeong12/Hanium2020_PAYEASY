@@ -47,6 +47,7 @@ public class MenuCheckFragment extends AbstractCenterAuthMainFragment {
     // data
     private Bundle args;
     private ApiCallUserMeResponse result;
+    String menuData;
 
     public MenuCheckFragment() {
         // Required empty public constructor
@@ -65,6 +66,9 @@ public class MenuCheckFragment extends AbstractCenterAuthMainFragment {
         super.onCreate(savedInstanceState);
         context = getContext();
         args = getArguments();
+        menuData = args.getString("menuForArgs");
+        Log.d("data: ", menuData);
+
         if (args == null) args = new Bundle();
 
         //result = args.getParcelable("result");
@@ -98,7 +102,7 @@ public class MenuCheckFragment extends AbstractCenterAuthMainFragment {
         // mList 할당
         // addItem(getDrawable(R.drawable.ic_account_box_black_36dp), "Box", "Account Box Black 36dp") ;
         // args로 데이터 받고, 그 데이터 정리해서 mList에 넣기
-        String[] array = temp.split("#");
+        String[] array = menuData.split("#");
 
         for (int i = 0; i<array.length; i++){
             String[] array2 = array[i].split(" ");

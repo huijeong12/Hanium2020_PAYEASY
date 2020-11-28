@@ -5,10 +5,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,7 +27,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.kftc.openbankingsample2.R;
 import com.kftc.openbankingsample2.biz.center_auth.AbstractCenterAuthMainFragment;
+import com.kftc.openbankingsample2.biz.main.MenuFragment;
 import com.kftc.openbankingsample2.common.util.view.recyclerview.KmRecyclerViewDividerHeight;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -44,7 +49,7 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
     //data
     private Bundle args;
 
-    //생성자자
+    //생성자
    public ForOrderListFragment(){
 
     }
@@ -74,6 +79,42 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
 
     void initData() {
 
+       view.findViewById(R.id.makeQRcode).setOnClickListener(v->{
+
+           int menuCnt = adapter.getItemCount();
+           Log.d("Menu count: ", Integer.toString(menuCnt));
+
+           String menuForArgs = "";
+
+           for (int i = 0; i<menuCnt; i++){
+               View menuItem = recyclerView.getLayoutManager().findViewByPosition(i);
+               EditText menuCount = menuItem.findViewById(R.id.orderMenuCount);
+               TextView menuName = menuItem.findViewById(R.id.orderMenuName);
+               TextView menuPrice = menuItem.findViewById(R.id.orderMenuPrice);
+               String menuCount_s = menuCount.getText().toString();
+               String menuName_s = menuName.getText().toString();
+               String menuPrice_s = menuPrice.getText().toString();
+
+               if (!menuCount_s.equals("0")){
+                   Log.d("name, price, count: ", menuName_s + ", " + menuPrice_s + ", " + menuCount_s);
+                   if (i == menuCnt-1){
+                       menuForArgs += menuName_s + " " + menuPrice_s + " " + menuCount_s;
+                   }
+                   else {
+                       menuForArgs += menuName_s + " " + menuPrice_s + " " + menuCount_s + "#";
+                   }
+               }
+           }
+
+           Log.d("menuForArgs: ", menuForArgs);
+            args.putString("menuForArgs", menuForArgs);
+
+           startFragment(MenuCheckFragment.class, args, R.string.fragment_id_manu_check);
+       });
+
+       view.findViewById(R.id.btnChangemenuPage).setOnClickListener(v->{
+           startFragment(MenuFragment.class, args, R.string.fragment_menu);
+       });
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration(new KmRecyclerViewDividerHeight(10));
@@ -105,7 +146,6 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
 
                     Object value =snapshot.getValue();
                     Log.d("price value: ", value.toString());
-
 
                 }
 
