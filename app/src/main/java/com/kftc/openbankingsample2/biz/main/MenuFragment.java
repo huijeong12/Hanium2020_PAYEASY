@@ -3,6 +3,8 @@ package com.kftc.openbankingsample2.biz.main;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,14 +27,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.kftc.openbankingsample2.R;
 import com.kftc.openbankingsample2.biz.center_auth.AbstractCenterAuthMainFragment;
+import com.kftc.openbankingsample2.biz.center_auth.market.CenterAuthMarketRegisterItem;
 
 import java.util.ArrayList;
+import java.util.Random;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MenuFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class MenuFragment extends AbstractCenterAuthMainFragment {
 
     private RecyclerView recyclerView;
@@ -40,10 +39,23 @@ public class MenuFragment extends AbstractCenterAuthMainFragment {
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<menuList> arrayList;
 
+    FirebaseDatabase database;
+    String items;
+    private Bundle args;
+
     private View view;
 
     public MenuFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        database = FirebaseDatabase.getInstance();
+        args = getArguments();
+
+        if (args == null) args = new Bundle();
     }
 
     @Override
@@ -99,7 +111,45 @@ public class MenuFragment extends AbstractCenterAuthMainFragment {
 
             }
         });
+
+        view.findViewById(R.id.button_add).setOnClickListener(v->editArgs("R"));
+
         return view;
     }
+
+
+    void editArgs(String isEditOrRegister) {
+
+        DatabaseReference ref = database.getReference().child("market_info").child("hanium2020").child("numberOfItem");
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                items = dataSnapshot.getValue().toString();
+                String[] strings = new String[2];
+                strings[0] = isEditOrRegister;
+
+                if (isEditOrRegister == "E") {
+                    Random random = new Random();
+                    items = Integer.toString(random.nextInt(Integer.valueOf(items)) + 1);
+                }
+
+                else {
+                    items = Integer.toString(Integer.valueOf(items) + 1);
+                }
+                strings[1] = items;
+
+                args.putStringArray("key", strings);
+                startFragment(CenterAuthMarketRegisterItem.class, args, R.string.fragment_id_register_item);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 
 }

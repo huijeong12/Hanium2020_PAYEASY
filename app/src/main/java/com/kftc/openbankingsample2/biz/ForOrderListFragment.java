@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,12 +28,14 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.kftc.openbankingsample2.R;
 import com.kftc.openbankingsample2.biz.center_auth.AbstractCenterAuthMainFragment;
+import com.kftc.openbankingsample2.biz.center_auth.market.CenterAuthMarketRegisterItem;
 import com.kftc.openbankingsample2.biz.main.MenuFragment;
 import com.kftc.openbankingsample2.common.util.view.recyclerview.KmRecyclerViewDividerHeight;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 //order List에 뜨게 될 메뉴들
 
@@ -49,6 +52,7 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
     //data
     private Bundle args;
 
+
     //생성자
    public ForOrderListFragment(){
 
@@ -59,6 +63,7 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
         super.onCreate(savedInstanceState);
         context = getContext();
         args = getArguments();
+
         if (args == null) args = new Bundle();
     }
 
@@ -85,6 +90,7 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
            Log.d("Menu count: ", Integer.toString(menuCnt));
 
            String menuForArgs = "";
+           int valid=0;
 
            for (int i = 0; i<menuCnt; i++){
                View menuItem = recyclerView.getLayoutManager().findViewByPosition(i);
@@ -97,6 +103,8 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
 
                if (!menuCount_s.equals("0")){
                    Log.d("name, price, count: ", menuName_s + ", " + menuPrice_s + ", " + menuCount_s);
+                   valid++;
+
                    if (i == menuCnt-1){
                        menuForArgs += menuName_s + " " + menuPrice_s + " " + menuCount_s;
                    }
@@ -106,6 +114,10 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
                }
            }
 
+           if (valid==0) {
+               Toast.makeText(context, "주문을 입력해주세요.", Toast.LENGTH_LONG).show();
+               return;
+           }
            Log.d("menuForArgs: ", menuForArgs);
             args.putString("menuForArgs", menuForArgs);
 
