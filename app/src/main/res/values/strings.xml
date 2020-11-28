@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">오픈뱅킹샘플</string>
+    <!--내꺼 -->
+    <string name ="fragment_id_for_order_list" translatable="false">메뉴 주문하기</string>
 
     <string name="fragment_menu" translatable="false">메뉴판</string>
 

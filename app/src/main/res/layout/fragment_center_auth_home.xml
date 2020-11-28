@@ -67,6 +67,19 @@
                 android:text="메뉴 확인" />
 
 
+    <Button
+        android:id="@+id/btnOrderMenu"
+        style="@style/Button01"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:text="메뉴 주문받기"
+        android:layout_marginTop="20dp"/>
+
+
 </LinearLayout>
 </ScrollView>
 

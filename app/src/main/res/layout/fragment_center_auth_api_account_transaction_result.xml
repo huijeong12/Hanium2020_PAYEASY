@@ -6,8 +6,11 @@
 
     <!--서브타이틀-->
     <LinearLayout android:id="@+id/llSubTitle" style="@style/SubTitleLayout">
-        <TextView android:id="@+id/tvSubTitle" style="@style/SubTitleText"
-            android:text="거래내역조회(/account/transaction_list) 또는 송금인정보조회(inquiry/remit_list) - 결과"/>
+
+        <TextView
+            android:id="@+id/tvSubTitle"
+            style="@style/SubTitleText"
+            android:text="거래내역조회(/account/transaction_list) 또는 송금인정보조회(inquiry/remit_list) - 결과" />
     </LinearLayout>
 
     <!--메인 : 안에 recyclerview 가 있고, 바닥까지 스크롤되면 또 실행되어야 하므로 scrollview를 사용하지 않는다.-->
