@@ -55,7 +55,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
                 .load("images/menu1.jpg")
                 .into(holder.iv_profile);
         holder.cb_menuName.setText(arrayList.get(position).getMenuName());
-        holder.tv_price.setText(arrayList.get(position).getPrice());
+        holder.tv_price.setText(arrayList.get(position).getPrice()+"원");
     }
 
     @Override

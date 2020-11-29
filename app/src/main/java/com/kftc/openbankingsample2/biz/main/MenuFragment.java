@@ -15,7 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -122,7 +125,19 @@ public class MenuFragment extends AbstractCenterAuthMainFragment implements OnIt
                                         String s = data.child("Name").getValue().toString();
                                         if (s == s_menu) {
                                             data.getRef().removeValue();
-                                            selected.remove(s);
+                                            storageRef.child(s_menu+".jpg").delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    Log.d("storage", "delete success");
+                                                    Toast.makeText(getContext(), "삭제 완료", Toast.LENGTH_LONG).show();
+                                                }
+                                            }).addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.d("storage", "delete fail");
+                                                    Toast.makeText(getContext(), "삭제 실패", Toast.LENGTH_LONG).show();
+                                                }
+                                            });
                                         }
                                     }
                                 }
