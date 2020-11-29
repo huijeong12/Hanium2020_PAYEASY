@@ -80,6 +80,6 @@ public class TransferWithdrawScanQR extends AbstractCenterAuthMainFragment {
 
     @Override
     public void onBackPressed() {
-        startFragment(AccountListFragment.class, args, R.string.fragment_id_account_list);
+        super.onBackPressed();
     }
 }
