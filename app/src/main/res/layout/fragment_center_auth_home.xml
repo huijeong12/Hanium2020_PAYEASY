@@ -14,7 +14,6 @@
 <ScrollView android:id="@+id/svMainScroll" style="@style/MainScrollView">
 <LinearLayout android:id="@+id/llMainLayout" style="@style/MainLayout">
 
-<<<<<<<<< Temporary merge branch 1
     <Button
         android:layout_marginTop="50dp"
         android:id="@+id/btnAuthToken"

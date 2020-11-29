@@ -37,7 +37,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     FirebaseStorage storage;
     StorageReference storageRef ;
 
-    public MenuAdapter(ArrayList<menuList> arrayList, Context context) {
     public MenuAdapter(ArrayList<menuList> arrayList, Context context, OnItemClick listener) {
         this.arrayList = arrayList;
         this.context = context;
@@ -106,10 +105,9 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
         public MenuViewHolder(@NonNull View itemView) {
             super(itemView);
-            iv_profile = itemView.findViewById(R.id.profile);
-            cb_menuName = itemView.findViewById(R.id.menuName);
-            tv_price = itemView.findViewById(R.id.price);
-        }
+//            iv_profile = itemView.findViewById(R.id.profile);
+//            cb_menuName = itemView.findViewById(R.id.menuName);
+//            tv_price = itemView.findViewById(R.id.price);
             this.iv_profile = itemView.findViewById(R.id.profile);
             this.cb_menuName = itemView.findViewById(R.id.menuName);
             this.tv_price = itemView.findViewById(R.id.price);

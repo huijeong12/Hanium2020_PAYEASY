@@ -176,6 +176,7 @@ public class MenuFragment extends AbstractCenterAuthMainFragment implements OnIt
                 ad.show();
             }
         });
+        view.findViewById(R.id.button_add).setOnClickListener(v->editArgs(("R")));
         return view;
     }
 
