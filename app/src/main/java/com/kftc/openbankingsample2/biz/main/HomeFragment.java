@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.kftc.openbankingsample2.R;
+import com.kftc.openbankingsample2.biz.center_auth.buyer.account_list.AccountListFragment;
 import com.kftc.openbankingsample2.biz.center_auth.seller.order_list.ForOrderListFragment;
 import com.kftc.openbankingsample2.biz.center_auth.AbstractCenterAuthMainFragment;
 
@@ -59,7 +60,7 @@ public class HomeFragment extends AbstractCenterAuthMainFragment {
         view.findViewById(R.id.btnSeller).setOnClickListener(v -> startFragment(ForOrderListFragment.class, args, R.string.fragment_id_for_order_list));
 
         // 소비자
-        // view.findViewById(R.id.btnBuyer).setOnClickListener(v -> startFragment(AccountListFragment.class, args, R.string.fragment_id_account_list));
+        view.findViewById(R.id.btnBuyer).setOnClickListener(v -> startFragment(AccountListFragment.class, args, R.string.fragment_id_account_list));
 
         // 하단 버전표시
         try {

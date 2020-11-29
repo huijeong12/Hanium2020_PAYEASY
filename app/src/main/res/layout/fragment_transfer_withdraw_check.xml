@@ -1,0 +1,130 @@
+<RelativeLayout
+    android:id="@+id/check"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--서브타이틀-->
+    <LinearLayout android:id="@+id/llSubTitle" style="@style/SubTitleLayout">
+        <TextView android:id="@+id/tvSubTitle" style="@style/SubTitleText"
+            android:text="결제 정보 확인"/>
+    </LinearLayout>
+
+    <!--메인-->
+    <ScrollView android:id="@+id/svMainScroll" style="@style/MainScrollView">
+        <LinearLayout android:id="@+id/llMainLayout" style="@style/MainLayout">
+
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@drawable/border_result_info_top"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="3"
+                    style="@style/FormLabel01"
+                    android:layout_width="0dp"
+                    android:gravity="center_vertical"
+                    android:text="가게명"/>
+
+                <EditText
+                    android:id="@+id/recv_client_market_name"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="3"
+                    android:textSize="50px"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@drawable/border_result_info_bottom"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="3"
+                    style="@style/FormLabel01"
+                    android:layout_width="0dp"
+                    android:gravity="center_vertical"
+                    android:text="받는 사람"/>
+                <EditText
+                    android:id="@+id/recv_client_name"
+                    android:layout_weight="3"
+                    android:layout_height="50dp"
+                    android:layout_width="100dp"
+                    android:textSize="50px"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@drawable/border_result_info_bottom"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="3"
+                    style="@style/FormLabel01"
+                    android:layout_width="0dp"
+                    android:gravity="center_vertical"
+                    android:text="수취 계좌"/>
+                <EditText
+                    android:id="@+id/recv_client_account_num"
+                    android:layout_weight="3"
+                    android:layout_height="50dp"
+                    android:layout_width="100dp"
+                    android:textSize="50px"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@drawable/border_result_info_bottom"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="3"
+                    style="@style/FormLabel01"
+                    android:layout_width="0dp"
+                    android:gravity="center_vertical"
+                    android:text="금액"/>
+                <EditText
+                    android:id="@+id/trans_amt"
+                    android:layout_weight="3"
+                    android:layout_height="50dp"
+                    android:layout_width="100dp"
+                    android:textSize="50px"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!--하단버튼-->
+    <LinearLayout android:id="@+id/llBottomButton" style="@style/BottomButtonLayout">
+        <Button android:id="@+id/btnRescan" style="@style/RescanQR" />
+        <Button android:id="@+id/btnNext" style="@style/BottomNextButton"/>
+    </LinearLayout>
+
+</RelativeLayout>

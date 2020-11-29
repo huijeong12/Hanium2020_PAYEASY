@@ -1,10 +1,12 @@
 package com.kftc.openbankingsample2.biz.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -13,6 +15,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.kftc.openbankingsample2.R;
 
 /**
@@ -90,4 +94,5 @@ public class MainActivity extends AbstractMainActivity {
     private void goNext() {
         startFragment(MainFragment.class, args, R.string.fragment_id_main);
     }
+
 }
