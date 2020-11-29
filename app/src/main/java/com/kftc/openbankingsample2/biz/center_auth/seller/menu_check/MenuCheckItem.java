@@ -1,4 +1,4 @@
-package com.kftc.openbankingsample2.biz;
+package com.kftc.openbankingsample2.biz.center_auth.seller.menu_check;
 
 public class MenuCheckItem {
     private String price;

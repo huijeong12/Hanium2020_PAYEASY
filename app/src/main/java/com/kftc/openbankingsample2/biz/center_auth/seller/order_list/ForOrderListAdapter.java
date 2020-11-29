@@ -1,4 +1,4 @@
-package com.kftc.openbankingsample2.biz;
+package com.kftc.openbankingsample2.biz.center_auth.seller.order_list;
 
 import android.content.Context;
 import android.view.LayoutInflater;

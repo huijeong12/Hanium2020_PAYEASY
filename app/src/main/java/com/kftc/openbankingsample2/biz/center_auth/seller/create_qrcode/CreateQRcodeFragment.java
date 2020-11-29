@@ -1,4 +1,4 @@
-package com.kftc.openbankingsample2.biz.center_auth;
+package com.kftc.openbankingsample2.biz.center_auth.seller.create_qrcode;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -21,6 +21,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kftc.openbankingsample2.R;
+import com.kftc.openbankingsample2.biz.center_auth.AbstractCenterAuthMainFragment;
+import com.kftc.openbankingsample2.biz.center_auth.CenterAuthHomeFragment;
+import com.kftc.openbankingsample2.biz.center_auth.seller.order_list.ForOrderListFragment;
 import com.kftc.openbankingsample2.biz.main.HomeFragment;
 
 import java.util.Locale;
@@ -162,7 +165,7 @@ public class CreateQRcodeFragment extends AbstractCenterAuthMainFragment {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(context,"판매자 메인화면으로 이동합니다.",Toast.LENGTH_LONG).show();
-                        startFragment(CenterAuthHomeFragment.class, args, R.string.fragment_id_home);
+                        startFragment(ForOrderListFragment.class, args, R.string.fragment_id_for_order_list);
                     }
                 });
 

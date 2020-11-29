@@ -1,4 +1,4 @@
-package com.kftc.openbankingsample2.biz.center_auth.market;
+package com.kftc.openbankingsample2.biz.center_auth.seller.menu_info;
 
 import android.Manifest;
 import android.content.Context;
@@ -11,7 +11,6 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,7 +49,7 @@ import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
-public class CenterAuthMarketRegisterItem extends AbstractCenterAuthMainFragment {
+public class MenuInfoFragment extends AbstractCenterAuthMainFragment {
     // context
     private Context context;
 

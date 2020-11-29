@@ -16,12 +16,21 @@
 
             <Button
                 android:layout_marginTop="50dp"
-                android:id="@+id/btnCenterAuth"
+                android:id="@+id/btnSeller"
                 style="@style/Button01"
                 android:layout_width="280dp"
                 android:layout_height="150dp"
                 android:textSize="25sp"
-                android:text="센터인증"/>
+                android:text="판매자"/>
+
+            <Button
+                android:layout_marginTop="50dp"
+                android:id="@+id/btnBuyer"
+                style="@style/Button01"
+                android:layout_width="280dp"
+                android:layout_height="150dp"
+                android:textSize="25sp"
+                android:text="소비자"/>
 
         </LinearLayout>
     </ScrollView>

@@ -1,21 +1,18 @@
-package com.kftc.openbankingsample2.biz;
+package com.kftc.openbankingsample2.biz.center_auth.seller.order_list;
 
 
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.view.menu.MenuAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,18 +21,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.kftc.openbankingsample2.R;
 import com.kftc.openbankingsample2.biz.center_auth.AbstractCenterAuthMainFragment;
-import com.kftc.openbankingsample2.biz.center_auth.market.CenterAuthMarketRegisterItem;
-import com.kftc.openbankingsample2.biz.main.MenuFragment;
+import com.kftc.openbankingsample2.biz.center_auth.seller.menu_check.MenuCheckFragment;
+import com.kftc.openbankingsample2.biz.center_auth.seller.menu_list.MenuFragment;
 import com.kftc.openbankingsample2.common.util.view.recyclerview.KmRecyclerViewDividerHeight;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.Random;
 
 //order List에 뜨게 될 메뉴들
 
@@ -92,7 +84,7 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
            String menuForArgs = "";
            int valid=0;
 
-           for (int i = 0; i<menuCnt; i++){
+           for (int i = 0; i < menuCnt; i++){
                View menuItem = recyclerView.getLayoutManager().findViewByPosition(i);
                EditText menuCount = menuItem.findViewById(R.id.orderMenuCount);
                TextView menuName = menuItem.findViewById(R.id.orderMenuName);
