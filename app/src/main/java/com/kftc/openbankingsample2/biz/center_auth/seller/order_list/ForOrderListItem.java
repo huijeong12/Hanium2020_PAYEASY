@@ -19,9 +19,7 @@ public class ForOrderListItem {
         name = name1;
     }
 
-    /////
 
-    //
     public String getPrice(){
         return this.price;
     }
