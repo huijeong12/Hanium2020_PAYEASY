@@ -32,6 +32,7 @@ import com.kftc.openbankingsample2.biz.center_auth.market.CenterAuthMarketRegist
 import java.util.ArrayList;
 import java.util.Random;
 
+
 public class MenuFragment extends AbstractCenterAuthMainFragment {
 
     private RecyclerView recyclerView;
@@ -86,7 +87,7 @@ public class MenuFragment extends AbstractCenterAuthMainFragment {
                     String photo = snapshot.child("Photo").getValue().toString();
 
                     menus.setMenuName(name);
-                    menus.setPrice(price);
+                    menus.setPrice(price+"원");
                     menus.setProfile(photo);
 
                     arrayList.add(menus);
