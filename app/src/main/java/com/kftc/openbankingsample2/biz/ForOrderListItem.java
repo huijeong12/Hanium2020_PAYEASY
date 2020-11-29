@@ -30,8 +30,5 @@ public class ForOrderListItem {
     public String getName(){
         return this.name;
     }
-    //
-
-
 
 }
