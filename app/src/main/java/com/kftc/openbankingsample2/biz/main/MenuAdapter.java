@@ -1,6 +1,7 @@
 package com.kftc.openbankingsample2.biz.main;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +21,24 @@ import com.bumptech.glide.Glide;
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
 
     private ArrayList<menuList> arrayList;
+    private ArrayList<Integer> menu_selected = new ArrayList<Integer>();
     private Context context;
+    private OnItemClick mCallback;
 
-    public MenuAdapter(ArrayList<menuList> arrayList, Context context) {
+    public MenuAdapter(ArrayList<menuList> arrayList, Context context, OnItemClick listener) {
         this.arrayList = arrayList;
         this.context = context;
+        this.mCallback = listener;
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(View v, int pos);
+    }
+
+    private OnItemClickListener mListener=null;
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mListener=listener;
     }
 
     @NonNull
@@ -37,12 +51,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MenuAdapter.MenuViewHolder holder, int position) {
-        Glide.with(holder.itemView)
-                .load(arrayList.get(position).getProfile())
+        Glide.with(context)
+                .load("images/menu1.jpg")
                 .into(holder.iv_profile);
         holder.cb_menuName.setText(arrayList.get(position).getMenuName());
         holder.tv_price.setText(arrayList.get(position).getPrice());
-
     }
 
     @Override
@@ -60,8 +73,21 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             this.iv_profile = itemView.findViewById(R.id.profile);
             this.cb_menuName = itemView.findViewById(R.id.menuName);
             this.tv_price = itemView.findViewById(R.id.price);
+
+            this.cb_menuName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(cb_menuName.isChecked()){
+                        int pos = getAdapterPosition();
+                        Log.d("check", "position " + pos);
+                        if(pos!=RecyclerView.NO_POSITION)
+                            menu_selected.add(pos);
+                    }
+                }
+            });
+
+            mCallback.onClick(menu_selected);
         }
-
-
     }
+
 }

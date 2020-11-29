@@ -1,13 +1,17 @@
 package com.kftc.openbankingsample2.biz.main;
 
+import android.widget.ImageView;
+
+import com.google.firebase.storage.StorageReference;
+
 public class menuList {
-    private String profile;
+    private StorageReference profile;
     private String menuName;
     private String price;
 
     public menuList(){}
 
-    public String getProfile(){
+    public StorageReference getProfile(){
         return profile;
     }
 
@@ -19,8 +23,8 @@ public class menuList {
         return price;
     }
 
-    public void setProfile(String pro) {
-        this.profile = pro;
+    public void setProfile(StorageReference profile) {
+        this.profile = profile;
     }
 
     public void setMenuName(String menuName) {
