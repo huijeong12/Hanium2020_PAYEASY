@@ -62,15 +62,73 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle saveInstanceState){
         view = inflater.inflate(R.layout.fragment_for_order_list,container,false);
+
+        FirebaseDatabase database =FirebaseDatabase.getInstance();
+        DatabaseReference myRef=database.getReference("seller_info");
+
+        myRef.child("hanium2020").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+
+
+                    TextView sellerName =view.findViewById(R.id.sellerInfo);
+                    TextView marketName =view.findViewById(R.id.marketInfo);
+
+
+
+                    String market = "0";
+                    String seller = "0";
+
+                    if (datasnapshot.child("Name").getValue() !=null){
+                        seller = datasnapshot.child("Name").getValue().toString();
+                    }
+
+                    if(datasnapshot.child("Market").getValue() != null){
+                        market =datasnapshot.child("Market").getValue().toString();
+                    }
+
+
+
+                    sellerName.setText(seller+" 사용자님");
+                    marketName.setText(market+" 마켓");
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w("pay-easy", "Failed to read value.", error.toException());
+            }
+        });
+
+
+        database =FirebaseDatabase.getInstance();
+        myRef=database.getReference("market_info");
+
+        myRef.child("hanium2020").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                TextView money =view.findViewById(R.id.moneyInfo);
+                String sales ="0";
+
+                if(datasnapshot.child("Sales").getValue() != null){
+                    sales =datasnapshot.child("Sales").getValue().toString();
+                }
+                money.setText("매출 :"+sales +"원");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w("pay-easy", "Failed to read value.", error.toException());
+            }
+        });
+
+
+
         initData();
         return view;
     }
 
-
-
-    /////////////////
-    //디비에서 메뉴들을 받아와야하는데..어떻게 받아와야할지..고민입니다요.........이렇게 하면 안될거같은뎅 ㅇㅁㅇ
-    ////////////////
 
 
 
@@ -119,6 +177,8 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
        view.findViewById(R.id.btnChangemenuPage).setOnClickListener(v->{
            startFragment(MenuFragment.class, args, R.string.fragment_menu);
        });
+
+
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration(new KmRecyclerViewDividerHeight(10));
@@ -143,7 +203,7 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
                     String name = snapshot.child("Name").getValue().toString();
 
                     items.setCount("0");
-                    items.setPrice(price);
+                    items.setPrice(price+"원");
                     items.setName(name);
 
                     mList.add(items);
@@ -162,6 +222,8 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
                 Log.w("pay-easy", "Failed to read value.", error.toException());
             }
         });
+
+
 
 
         // 리사이클러뷰에 어댑터 설정
