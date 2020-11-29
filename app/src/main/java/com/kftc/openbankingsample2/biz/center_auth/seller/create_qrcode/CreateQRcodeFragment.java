@@ -179,6 +179,7 @@ public class CreateQRcodeFragment extends AbstractCenterAuthMainFragment {
         /*
          *금액 1000
          *입금계좌인자내역 어플이름-입금
+         *가게명 한이음분식
          *최종수취고객성명 김오픈
          *최종수취고객계좌표준코드 197
          *최종수취고객계좌번호 232000067812

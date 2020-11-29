@@ -338,7 +338,7 @@ public class MenuInfoFragment extends AbstractCenterAuthMainFragment {
         newItemRef.child("Price").setValue(etItemPrice.getText().toString());
         newItemRef.child("Memo").setValue(etItemMemo.getText().toString());
 
-        databaseRef.child("numberOfItem").setValue(strings[1]);
+        // databaseRef.child("numberOfItem").setValue(strings[1]);
 
         goNext();
     }

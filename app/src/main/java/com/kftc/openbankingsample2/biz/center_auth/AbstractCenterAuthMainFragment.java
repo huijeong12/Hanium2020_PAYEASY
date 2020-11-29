@@ -148,6 +148,13 @@ public class AbstractCenterAuthMainFragment extends AbstractMainFragment {
         return result;
     }
 
+    protected String setRandomBankTranIdCustom() {
+        String clientUseCode = CenterAuthUtils.getSavedValueFromSetting(CenterAuthConst.CENTER_AUTH_CLIENT_USE_CODE);
+        String randomUnique9String = Utils.getCurrentTime();    // 이용기관 부여번호를 임시로 시간데이터 사용
+        String result = String.format("%sU%s", clientUseCode, randomUnique9String);
+        return result;
+    }
+
     // 은행거래고유번호(20자리)
     protected String getRandomBankTranId() {
         return setRandomBankTranId(null);
