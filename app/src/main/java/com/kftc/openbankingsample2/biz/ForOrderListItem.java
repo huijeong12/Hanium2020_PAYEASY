@@ -6,11 +6,12 @@ public class ForOrderListItem {
     private String price;
     private String count;
     private String name;
+    //
+
 
     public void setPrice(String price1){
        price =price1;
     }
-
     public void setCount(String count1){
         count =count1;
     }
@@ -18,6 +19,9 @@ public class ForOrderListItem {
         name = name1;
     }
 
+    /////
+
+    //
     public String getPrice(){
         return this.price;
     }
@@ -29,10 +33,7 @@ public class ForOrderListItem {
     public String getName(){
         return this.name;
     }
-
-
-
-
+    //
 
 
 
