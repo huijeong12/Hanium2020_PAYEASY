@@ -214,6 +214,7 @@
         <item name="android:background">@drawable/bottom_cancel_button</item>
     </style>
 
+    <!--수량 플러스 버튼 -->
     <style name="BottomPlusButton">
         <item name="android:layout_weight">1</item>
         <item name="android:text">+</item>
@@ -225,6 +226,7 @@
         <item name="android:background">@color/colorTansparent</item>
     </style>
 
+    <!-- 수량 마이너스 버튼 -->
     <style name="BottomMinusButton">
         <item name="android:layout_weight">1</item>
         <item name="android:text">-</item>
@@ -235,4 +237,13 @@
         <item name="android:textStyle">bold</item>
         <item name="android:background">@color/colorTansparent</item>
     </style>
+
+    <!-- 버튼 스타일 , QR코드 생성 버튼 -->
+    <style name="BottomQRButton">
+        <item name="android:textColor">#F8F8F8</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:background">@drawable/button_shape_round</item>
+    </style>
+
 </resources>

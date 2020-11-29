@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,8 +29,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.kftc.openbankingsample2.R;
 import com.kftc.openbankingsample2.biz.center_auth.AbstractCenterAuthMainFragment;
+import com.kftc.openbankingsample2.biz.center_auth.market.CenterAuthMarketRegisterItem;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MenuFragment extends AbstractCenterAuthMainFragment implements OnItemClick{
 
@@ -39,6 +42,10 @@ public class MenuFragment extends AbstractCenterAuthMainFragment implements OnIt
     private ArrayList<menuList> arrayList;
     private ArrayList<Integer> selected;
 
+    FirebaseDatabase database;
+    String items;
+    private Bundle args;
+
     private View view;
 
     public MenuFragment() {
@@ -47,6 +54,15 @@ public class MenuFragment extends AbstractCenterAuthMainFragment implements OnIt
     @Override
     public void onClick(ArrayList<Integer> value) {
         this.selected = value;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        database = FirebaseDatabase.getInstance();
+        args = getArguments();
+
+        if (args == null) args = new Bundle();
     }
 
     @Override
@@ -71,19 +87,20 @@ public class MenuFragment extends AbstractCenterAuthMainFragment implements OnIt
             public void onDataChange(DataSnapshot dataSnapshot) {
                 arrayList.clear();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Log.d("where", "in addvalue");
-
                     menuList menus = new menuList();
-
-                    String price = snapshot.child("Price").getValue().toString();
+                    String price = "";
+                    String photo = "";
+                    if (snapshot.child("Price").getValue() != null) {
+                        price = snapshot.child("Price").getValue().toString();
+                    }
                     String name = snapshot.child("Name").getValue().toString();
-                    String photo = snapshot.child("Photo").getValue().toString();
-
-                    StorageReference imgRef = storageRef.child(photo);
+                    if (snapshot.child("Photo").getValue() != null) {
+                        photo = snapshot.child("Photo").getValue().toString();
+                    }
 
                     menus.setMenuName(name);
                     menus.setPrice(price);
-                    menus.setProfile(imgRef);
+                    menus.setProfile(photo);
 
                     arrayList.add(menus);
 
@@ -161,5 +178,40 @@ public class MenuFragment extends AbstractCenterAuthMainFragment implements OnIt
         });
         return view;
     }
+
+
+    void editArgs(String isEditOrRegister) {
+
+        DatabaseReference ref = database.getReference().child("market_info").child("hanium2020").child("numberOfItem");
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                items = dataSnapshot.getValue().toString();
+                String[] strings = new String[2];
+                strings[0] = isEditOrRegister;
+
+                if (isEditOrRegister == "E") {
+                    Random random = new Random();
+                    items = Integer.toString(random.nextInt(Integer.valueOf(items)) + 1);
+                }
+
+                else {
+                    items = Integer.toString(Integer.valueOf(items) + 1);
+                }
+                strings[1] = items;
+
+                args.putStringArray("key", strings);
+                startFragment(CenterAuthMarketRegisterItem.class, args, R.string.fragment_id_register_item);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 
 }
