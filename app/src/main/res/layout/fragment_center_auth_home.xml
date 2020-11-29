@@ -22,8 +22,46 @@
         android:layout_height="50dp"
         android:text="계좌등록"/>
 
+            <Button
+                android:id="@+id/btnAPICallMenu"
+                style="@style/Button01"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="API 거래 기능" />
+
+            <Button
+                android:id="@+id/btnCallMenu"
+                style="@style/Button01"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="메뉴판" />
+
+
+            <Button
+                android:id="@+id/btnCallMenuCheck"
+                style="@style/Button01"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="메뉴 확인" />
+
+
     <Button
-        android:id="@+id/btnAPICallMenu"
+        android:id="@+id/btnOrderMenu"
         style="@style/Button01"
         android:layout_width="280dp"
         android:layout_height="50dp"
@@ -31,7 +69,31 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:text="API 거래 기능"
+        android:text="메뉴 주문받기"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btnRegisterItem"
+        style="@style/Button01"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:text="메뉴 등록"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btnEditItem"
+        style="@style/Button01"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:text="메뉴 수정"
         android:layout_marginTop="20dp"/>
 
 </LinearLayout>

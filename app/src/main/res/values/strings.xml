@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name" translatable="false">오픈뱅킹샘플</string>
+    <!--내꺼 -->
+    <string name="fragment_id_for_order_list" translatable="false">메뉴 주문하기</string>
+    <string name="fragment_menu" translatable="false">메뉴판</string>
+    <string name="fragment_id_manu_check" translatable="false">주문 확인</string>
+    <string name="fragment_log_in" translatable="false">로그인</string>
+    <string name="fragment_create_qrcode_to_withdraw" translatable="false">QR코드생성</string>
+
+
+    <string name="fragment_id_register_item" translatable="false">메뉴 정보</string>
+    <string name="menu_camera_file" translatable="false">사진 </string>
 
     <string name="fragment_id_navi" translatable="false">navigation</string>
     <string name="fragment_id_main" translatable="false">오픈뱅킹샘플</string>
@@ -150,6 +160,8 @@
     <string name="use_org_contact">이용기관연락처 : </string>
     <string name="use_org_email">담당자이메일주소 : </string>
     <string name="account_holder_name">예금주명 : </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
     <!--영문/한글 변환 끝-->
