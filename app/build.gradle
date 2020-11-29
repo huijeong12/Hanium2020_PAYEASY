@@ -47,6 +47,11 @@ dependencies {
     implementation "com.google.android.material:material:$androidxLibVer"
     implementation "androidx.preference:preference:$androidxLibVer"
 
+    implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
+    //implementation 'com.google.zxing:core:3.3.0'
+    implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.4'
+    implementation 'com.google.zxing:core:3.3.2'
+
     /**
      *  오픈소스명 : retrofit
      *  오픈소스용도 : 통신

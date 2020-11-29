@@ -14,11 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kftc.openbankingsample2.R;
 import com.kftc.openbankingsample2.biz.center_auth.AbstractCenterAuthMainFragment;
 import com.kftc.openbankingsample2.biz.center_auth.CenterAuthConst;
+import com.kftc.openbankingsample2.biz.center_auth.CreateQRcodeFragment;
 import com.kftc.openbankingsample2.biz.center_auth.api.CenterAuthAPIFragment;
 import com.kftc.openbankingsample2.biz.center_auth.api.user_me.CenterAuthAPIUserMeResultAdapter;
 import com.kftc.openbankingsample2.biz.center_auth.util.CenterAuthUtils;
@@ -48,6 +50,7 @@ public class MenuCheckFragment extends AbstractCenterAuthMainFragment {
     private Bundle args;
     private ApiCallUserMeResponse result;
     String menuData;
+    int total_price=0;
 
     public MenuCheckFragment() {
         // Required empty public constructor
@@ -94,11 +97,11 @@ public class MenuCheckFragment extends AbstractCenterAuthMainFragment {
         initData();
 
         view.findViewById(R.id.btnCancel).setOnClickListener(v -> onBackPressed());
+        view.findViewById(R.id.btnNext).setOnClickListener(v->goNext());
 
     }
 
     void initList(){
-        String temp = "메뉴1 3000 5#메뉴2 5000 2#메뉴3 1000 3#메뉴4 2000 10#메뉴5 10000 1#메뉴6 1200 3";
         // mList 할당
         // addItem(getDrawable(R.drawable.ic_account_box_black_36dp), "Box", "Account Box Black 36dp") ;
         // args로 데이터 받고, 그 데이터 정리해서 mList에 넣기
@@ -165,6 +168,23 @@ public class MenuCheckFragment extends AbstractCenterAuthMainFragment {
     }
 
     void goNext() {
-        //startFragment(Fragment.class, null, R.string.fragment_id_center_api_call);
+
+        for (int i=0;i<adapter.getItemCount();i++){
+            View menuItem = recyclerView.getLayoutManager().findViewByPosition(i);
+            EditText editText = menuItem.findViewById(R.id.orderMenuCount);
+            TextView textView = menuItem.findViewById(R.id.orderMenuPrice);
+            String cntString = editText.getText().toString();
+            String priceString = textView.getText().toString();
+
+            int cntInt = Integer.parseInt(cntString);
+            int priceInt = Integer.parseInt(priceString);
+
+            total_price += cntInt*priceInt;
+        }
+        String total_Price_String = Integer.toString(total_price);
+        args.putString("total_price_arg", total_Price_String);
+        startFragment(CreateQRcodeFragment.class, args, R.string.fragment_create_qrcode_to_withdraw);
+
+
     }
 }
