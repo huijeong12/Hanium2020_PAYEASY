@@ -310,7 +310,8 @@ public class CenterAuthMarketRegisterItem extends AbstractCenterAuthMainFragment
 
     private void imageIntoStorage() {
 
-        String filename = "menu" + strings[1] + ".jpg";
+        //String filename = "menu" + strings[1] + ".jpg";
+        String filename = etItemName.getText().toString()+".jpg";
         StorageReference newImgStorageRef = storageRef.child(filename);
 
         UploadTask uploadTask = newImgStorageRef.putFile(imgUri);

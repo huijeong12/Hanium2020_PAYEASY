@@ -80,10 +80,15 @@ public class MenuFragment extends AbstractCenterAuthMainFragment {
                 arrayList.clear();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     menuList menus = new menuList();
-
-                    String price = snapshot.child("Price").getValue().toString();
+                    String price = "";
+                    String photo = "";
+                    if (snapshot.child("Price").getValue() != null) {
+                        price = snapshot.child("Price").getValue().toString();
+                    }
                     String name = snapshot.child("Name").getValue().toString();
-                    String photo = snapshot.child("Photo").getValue().toString();
+                    if (snapshot.child("Photo").getValue() != null) {
+                        photo = snapshot.child("Photo").getValue().toString();
+                    }
 
                     menus.setMenuName(name);
                     menus.setPrice(price);

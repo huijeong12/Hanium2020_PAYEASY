@@ -147,7 +147,11 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
                 for(DataSnapshot snapshot:datasnapshot.getChildren()){
                     ForOrderListItem items = new ForOrderListItem();
 
-                    String price = snapshot.child("Price").getValue().toString();
+                    String price = "";
+                    Log.d("price: ", snapshot.child("Name").toString() + ", " + snapshot.child("Price").toString());
+                    if (snapshot.child("Price").getValue() != null) {
+                        price = snapshot.child("Price").getValue().toString();
+                    }
                     String name = snapshot.child("Name").getValue().toString();
 
                     items.setCount("0");
@@ -155,9 +159,6 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
                     items.setName(name);
 
                     mList.add(items);
-
-                    Object value =snapshot.getValue();
-                    Log.d("price value: ", value.toString());
 
                 }
 
