@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.kftc.openbankingsample2.R;
+import com.kftc.openbankingsample2.biz.MenuCheckFragment;
 import com.kftc.openbankingsample2.biz.center_auth.api.CenterAuthAPIFragment;
 import com.kftc.openbankingsample2.biz.center_auth.auth.CenterAuthFragment;
 import com.kftc.openbankingsample2.biz.main.HomeFragment;
@@ -53,6 +54,7 @@ public class CenterAuthHomeFragment extends AbstractCenterAuthMainFragment {
         // API 거래
         view.findViewById(R.id.btnAPICallMenu).setOnClickListener(v -> startFragment(CenterAuthAPIFragment.class, args, R.string.fragment_id_center_api_call));
 
+        view.findViewById(R.id.btnCheckMenu).setOnClickListener(v -> startFragment(MenuCheckFragment.class, args, R.string.fragment_id_manu_check));
         // 메뉴판
         view.findViewById(R.id.btnCallMenu).setOnClickListener(v -> startFragment(MenuFragment.class, args, R.string.fragment_menu));
     }

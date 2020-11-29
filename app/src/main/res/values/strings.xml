@@ -3,6 +3,8 @@
 
     <string name="fragment_menu" translatable="false">메뉴판</string>
 
+    <string name="fragment_id_manu_check" translatable="false">주문 확인</string>
+
     <string name="fragment_id_navi" translatable="false">navigation</string>
     <string name="fragment_id_main" translatable="false">오픈뱅킹샘플</string>
     <string name="fragment_id_home" translatable="false">오픈뱅킹샘플</string>
