@@ -1,0 +1,47 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--서브타이틀-->
+    <LinearLayout android:id="@+id/llSubTitle" style="@style/SubTitleLayout">
+        <TextView android:id="@+id/tvSubTitle" style="@style/SubTitleText"
+            android:text="주문 확인 페이지\n- 고객이 요청한 주문 내역 확인"/>
+    </LinearLayout>
+
+    <!--메인-->
+    <ScrollView android:id="@+id/svMainScroll" style="@style/MainScrollView">
+        <LinearLayout android:id="@+id/llMainLayout" style="@style/MainLayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E1E1E1" />
+
+            <RelativeLayout
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!--하단버튼-->
+    <LinearLayout android:id="@+id/llBottomButton" style="@style/BottomButtonLayout">
+        <Button android:id="@+id/btnCancel" style="@style/BottomCancelButton"/>
+        <Button android:id="@+id/btnNext" style="@style/BottomNextButton"/>
+    </LinearLayout>
+
+</RelativeLayout>
