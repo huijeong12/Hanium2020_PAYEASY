@@ -1,4 +1,4 @@
-package com.kftc.openbankingsample2.biz;
+package com.kftc.openbankingsample2.biz.center_auth.seller.menu_check;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,25 +7,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kftc.openbankingsample2.R;
 import com.kftc.openbankingsample2.biz.center_auth.AbstractCenterAuthMainFragment;
-import com.kftc.openbankingsample2.biz.center_auth.CenterAuthConst;
-import com.kftc.openbankingsample2.biz.center_auth.CreateQRcodeFragment;
-import com.kftc.openbankingsample2.biz.center_auth.api.CenterAuthAPIFragment;
-import com.kftc.openbankingsample2.biz.center_auth.api.user_me.CenterAuthAPIUserMeResultAdapter;
-import com.kftc.openbankingsample2.biz.center_auth.util.CenterAuthUtils;
+import com.kftc.openbankingsample2.biz.center_auth.seller.create_qrcode.CreateQRcodeFragment;
 import com.kftc.openbankingsample2.common.data.ApiCallUserMeResponse;
-import com.kftc.openbankingsample2.common.util.Utils;
 import com.kftc.openbankingsample2.common.util.view.recyclerview.KmRecyclerViewDividerHeight;
 
 import java.util.ArrayList;
@@ -169,7 +161,7 @@ public class MenuCheckFragment extends AbstractCenterAuthMainFragment {
 
     void goNext() {
 
-        for (int i=0;i<adapter.getItemCount();i++){
+        for (int i = 0; i < adapter.getItemCount(); i++){
             View menuItem = recyclerView.getLayoutManager().findViewByPosition(i);
             EditText editText = menuItem.findViewById(R.id.orderMenuCount);
             TextView textView = menuItem.findViewById(R.id.orderMenuPrice);

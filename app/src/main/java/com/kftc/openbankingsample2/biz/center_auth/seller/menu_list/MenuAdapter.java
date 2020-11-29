@@ -1,4 +1,4 @@
-package com.kftc.openbankingsample2.biz.main;
+package com.kftc.openbankingsample2.biz.center_auth.seller.menu_list;
 
 import android.content.Context;
 import android.net.Uri;
