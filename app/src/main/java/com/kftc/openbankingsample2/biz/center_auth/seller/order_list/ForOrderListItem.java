@@ -6,7 +6,6 @@ public class ForOrderListItem {
     private String price;
     private String count;
     private String name;
-    //
 
 
     public void setPrice(String price1){
