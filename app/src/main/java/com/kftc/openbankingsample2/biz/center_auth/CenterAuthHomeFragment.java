@@ -17,7 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.kftc.openbankingsample2.R;
 import com.kftc.openbankingsample2.biz.center_auth.seller.menu_check.MenuCheckFragment;
 import com.kftc.openbankingsample2.biz.center_auth.seller.order_list.ForOrderListFragment;
-import com.kftc.openbankingsample2.biz.center_auth.seller.menu_info.MenuInfoFragment;
+import com.kftc.openbankingsample2.biz.center_auth.seller.menu_info.*;
 import com.kftc.openbankingsample2.biz.main.HomeFragment;
 import com.kftc.openbankingsample2.biz.center_auth.seller.menu_list.MenuFragment;
 

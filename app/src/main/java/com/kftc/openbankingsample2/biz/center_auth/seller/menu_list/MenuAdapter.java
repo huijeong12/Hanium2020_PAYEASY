@@ -23,7 +23,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.kftc.openbankingsample2.biz.ForOrderListAdapter;
+import com.kftc.openbankingsample2.biz.center_auth.seller.order_list.ForOrderListAdapter;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
 

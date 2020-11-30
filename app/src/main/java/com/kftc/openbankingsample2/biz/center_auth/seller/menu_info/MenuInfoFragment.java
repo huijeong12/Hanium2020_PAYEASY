@@ -1,4 +1,4 @@
-package com.kftc.openbankingsample2.biz.center_auth.market;
+package com.kftc.openbankingsample2.biz.center_auth.seller.menu_info;
 
 import android.Manifest;
 import android.content.Context;
@@ -42,7 +42,7 @@ import com.gun0912.tedpermission.TedPermission;
 import com.kftc.openbankingsample2.R;
 import com.kftc.openbankingsample2.biz.center_auth.AbstractCenterAuthMainFragment;
 import com.kftc.openbankingsample2.biz.center_auth.CenterAuthHomeFragment;
-import com.kftc.openbankingsample2.biz.main.MenuFragment;
+import com.kftc.openbankingsample2.biz.center_auth.seller.menu_list.MenuFragment;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,7 +52,7 @@ import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
-public class CenterAuthMarketRegisterItem extends AbstractCenterAuthMainFragment {
+public class MenuInfoFragment extends AbstractCenterAuthMainFragment {
     // context
     private Context context;
 

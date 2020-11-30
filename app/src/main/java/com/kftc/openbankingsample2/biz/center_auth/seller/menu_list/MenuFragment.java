@@ -1,4 +1,4 @@
-package com.kftc.openbankingsample2.biz.main;
+package com.kftc.openbankingsample2.biz.center_auth.seller.menu_list;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -28,9 +28,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.kftc.openbankingsample2.R;
-import com.kftc.openbankingsample2.biz.ForOrderListAdapter;
+import com.kftc.openbankingsample2.biz.center_auth.seller.order_list.ForOrderListAdapter;
+import com.kftc.openbankingsample2.biz.center_auth.seller.menu_info.MenuInfoFragment;
 import com.kftc.openbankingsample2.biz.center_auth.AbstractCenterAuthMainFragment;
-import com.kftc.openbankingsample2.biz.center_auth.market.CenterAuthMarketRegisterItem;
+import com.kftc.openbankingsample2.biz.center_auth.seller.menu_list.MenuAdapter;
+import com.kftc.openbankingsample2.biz.center_auth.seller.menu_list.menuList;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -150,7 +152,7 @@ public class MenuFragment extends AbstractCenterAuthMainFragment {
         strings[1] = positionName;
 
         args.putStringArray("key", strings);
-        startFragment(CenterAuthMarketRegisterItem.class, args, R.string.fragment_id_register_item);
+        startFragment(MenuInfoFragment.class, args, R.string.fragment_id_register_item);
 
 //        DatabaseReference ref = database.getReference().child("market_info").child("hanium2020").child("numberOfItem");
 //
