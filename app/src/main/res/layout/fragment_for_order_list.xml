@@ -18,6 +18,71 @@
         <LinearLayout
             android:id="@+id/llMainLayout"
             style="@style/MainLayout">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp">
+
+                <TableRow>
+
+                    <LinearLayout
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/sellerInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            android:gravity="center"
+                            android:text="XXX 사용자님"
+                            android:textColor="@color/md_black_1000"
+                            android:textSize="21sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/marketInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="25dp"
+                            android:gravity="center"
+                            android:text="XXX 마켓"
+                            android:textColor="@color/md_black_1000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            />
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/moneyInfo"
+                        style="@style/FormValue02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="48dp"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:inputType="text"
+                        android:text="매출: XXX원"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        />
+
+
+
+                </TableRow>
+
+
+            </TableLayout>
+
 
             <Button
                 android:id="@+id/btnChangemenuPage"
@@ -36,7 +101,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="21dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp">

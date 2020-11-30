@@ -10,11 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.kftc.openbankingsample2.R;
-import com.kftc.openbankingsample2.biz.center_auth.api.account_balance.CenterAuthAPIAccountBalanceFragment;
-import com.kftc.openbankingsample2.biz.center_auth.api.account_transaction.CenterAuthAPIAccountTransactionRequestFragment;
 // import com.kftc.openbankingsample2.biz.center_auth.api.inquiry_realname.CenterAuthAPIInquiryRealNameFragment;
-import com.kftc.openbankingsample2.biz.center_auth.api.transfer_withdraw.CenterAuthAPITransferWithdrawFragment;
-import com.kftc.openbankingsample2.biz.center_auth.api.user_me.CenterAuthAPIUserMeRequestFragment;
+
 
 public class NaviAPICallFragment extends AbstractNaviFragment {
 
@@ -45,23 +42,7 @@ public class NaviAPICallFragment extends AbstractNaviFragment {
 
     void initView() {
 
-        // 사용자정보조회
-        view.findViewById(R.id.llUserMe).setOnClickListener(v -> {
-            activity.closeNavi();
-            activity.startFragment(CenterAuthAPIUserMeRequestFragment.class, args, R.string.fragment_id_api_call_userme);
-        });
 
-        // 잔액조회
-        view.findViewById(R.id.llBalance).setOnClickListener(v -> {
-            activity.closeNavi();
-            activity.startFragment(CenterAuthAPIAccountBalanceFragment.class, args, R.string.fragment_id_api_call_balance);
-        });
-
-        // 거래내역조회
-        view.findViewById(R.id.llTransaction).setOnClickListener(v -> {
-            activity.closeNavi();
-            activity.startFragment(CenterAuthAPIAccountTransactionRequestFragment.class, args, R.string.fragment_id_api_call_transaction);
-        });
 //
 //        // 계좌실명조회
 //        view.findViewById(R.id.llRealName).setOnClickListener(v -> {
@@ -70,10 +51,6 @@ public class NaviAPICallFragment extends AbstractNaviFragment {
 //        });
 
         // 춭금이체
-        view.findViewById(R.id.llWithdraw).setOnClickListener(v -> {
-            activity.closeNavi();
-            activity.startFragment(CenterAuthAPITransferWithdrawFragment.class, args, R.string.fragment_id_api_call_withdraw);
-        });
 
     }
 }

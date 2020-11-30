@@ -2,7 +2,6 @@ package com.kftc.openbankingsample2.biz.center_auth;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,23 +9,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.kftc.openbankingsample2.R;
-import com.kftc.openbankingsample2.biz.MenuCheckFragment;
-import com.kftc.openbankingsample2.biz.ForOrderListFragment;
-import com.kftc.openbankingsample2.biz.ForOrderListItem;
-import com.kftc.openbankingsample2.biz.center_auth.api.CenterAuthAPIFragment;
-import com.kftc.openbankingsample2.biz.center_auth.auth.CenterAuthFragment;
-import com.kftc.openbankingsample2.biz.center_auth.market.CenterAuthMarketRegisterItem;
+import com.kftc.openbankingsample2.biz.center_auth.seller.menu_check.MenuCheckFragment;
+import com.kftc.openbankingsample2.biz.center_auth.seller.order_list.ForOrderListFragment;
+import com.kftc.openbankingsample2.biz.center_auth.seller.menu_info.*;
 import com.kftc.openbankingsample2.biz.main.HomeFragment;
-import com.kftc.openbankingsample2.biz.main.MenuFragment;
+import com.kftc.openbankingsample2.biz.center_auth.seller.menu_list.MenuFragment;
 
 import java.util.Random;
 
@@ -67,11 +60,6 @@ public class CenterAuthHomeFragment extends AbstractCenterAuthMainFragment {
 
     private void initView() {
 
-        // 계좌등록
-        view.findViewById(R.id.btnAuthToken).setOnClickListener(v -> startFragment(CenterAuthFragment.class, args, R.string.fragment_id_center_auth));
-
-        // API 거래
-        view.findViewById(R.id.btnAPICallMenu).setOnClickListener(v -> startFragment(CenterAuthAPIFragment.class, args, R.string.fragment_id_center_api_call));
 
         // 메뉴 추가 및 수정
         view.findViewById(R.id.btnRegisterItem).setOnClickListener(v -> editArgs("R"));
@@ -110,7 +98,7 @@ public class CenterAuthHomeFragment extends AbstractCenterAuthMainFragment {
                 strings[1] = items;
 
                 args.putStringArray("key", strings);
-                startFragment(CenterAuthMarketRegisterItem.class, args, R.string.fragment_id_register_item);
+                startFragment(MenuInfoFragment.class, args, R.string.fragment_id_register_item);
             }
 
             @Override
