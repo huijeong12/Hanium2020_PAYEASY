@@ -7,16 +7,17 @@ public class ForOrderListItem {
     private String count;
     private String name;
 
+
     public void setPrice(String price1){
        price =price1;
     }
-
     public void setCount(String count1){
         count =count1;
     }
     public void setName(String name1){
         name = name1;
     }
+
 
     public String getPrice(){
         return this.price;
@@ -29,11 +30,5 @@ public class ForOrderListItem {
     public String getName(){
         return this.name;
     }
-
-
-
-
-
-
 
 }
