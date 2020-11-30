@@ -36,11 +36,12 @@ import com.kftc.openbankingsample2.biz.center_auth.seller.menu_info.MenuInfoFrag
 import com.kftc.openbankingsample2.biz.center_auth.AbstractCenterAuthMainFragment;
 import com.kftc.openbankingsample2.biz.center_auth.seller.menu_list.MenuAdapter;
 import com.kftc.openbankingsample2.biz.center_auth.seller.menu_list.menuList;
+import com.kftc.openbankingsample2.biz.main.OnItemClick;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class MenuFragment extends AbstractCenterAuthMainFragment implements OnItemClick{
+public class MenuFragment extends AbstractCenterAuthMainFragment implements OnItemClick {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -122,10 +123,10 @@ public class MenuFragment extends AbstractCenterAuthMainFragment implements OnIt
                 Log.w("pay-easy", "Failed to read value.", error.toException());
             }
         });
-        adapter = new MenuAdapter(arrayList, getContext(), this);
+        // adapter = new MenuAdapter(arrayList, getContext(), this);
         //adapter = new MenuAdapter(arrayList, getContext());
 
-        adapter = new MenuAdapter(arrayList, getContext(), new MenuAdapter.MyAdapterListener() {
+        adapter = new MenuAdapter(arrayList, getContext(), this, new MenuAdapter.MyAdapterListener() {
             @Override
             public void textViewOnclick(View v, int position) {
                 Log.d("ming", Integer.toString(position) + "textView on clicked");
@@ -154,8 +155,9 @@ public class MenuFragment extends AbstractCenterAuthMainFragment implements OnIt
                         for(int s : selected) {
                            Log.d("delete", "position " + s);
                             View item = recyclerView.getLayoutManager().findViewByPosition(s);
-                            TextView tv_menu = item.findViewById(R.id.menuName);
+                            TextView tv_menu = item.findViewById(R.id.menuNameText);
                             String s_menu = tv_menu.getText().toString();
+                            Log.d("s_menu", "value - "+s_menu);
 
                             myRef.child("hanium2020").child("Menu").addValueEventListener(new ValueEventListener() {
                                 @Override
@@ -181,7 +183,8 @@ public class MenuFragment extends AbstractCenterAuthMainFragment implements OnIt
                                     }
                                 }
 
-        view.findViewById(R.id.button_add).setOnClickListener(v->editArgs("R", ""));
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
 
                                 }
                             });
@@ -197,10 +200,9 @@ public class MenuFragment extends AbstractCenterAuthMainFragment implements OnIt
                 ad.show();
             }
         });
-        view.findViewById(R.id.button_add).setOnClickListener(v->editArgs(("R")));
+        view.findViewById(R.id.button_add).setOnClickListener(v->editArgs("R",""));
         return view;
     }
-
 
     void editArgs(String isEditOrRegister, String positionName) {
 

@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.kftc.openbankingsample2.biz.center_auth.seller.order_list.ForOrderListAdapter;
+import com.kftc.openbankingsample2.biz.main.OnItemClick;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
 
@@ -38,10 +39,17 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     FirebaseStorage storage;
     StorageReference storageRef;
 
-    public MenuAdapter(ArrayList<menuList> arrayList, Context context, OnItemClick listener) {
+    public MenuAdapter.MyAdapterListener onClickListener;
+
+    public interface MyAdapterListener{
+        void textViewOnclick(View v, int position);
+    }
+
+    public MenuAdapter(ArrayList<menuList> arrayList, Context context, OnItemClick listener, MenuAdapter.MyAdapterListener listener2) {
         this.arrayList = arrayList;
         this.context = context;
         this.mCallback = listener;
+        onClickListener=listener2;
     }
 
     public interface OnItemClickListener{
@@ -70,7 +78,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     @Override
     public void onBindViewHolder(@NonNull MenuAdapter.MenuViewHolder holder, int position) {
 
-        holder.cb_menuName.setText(arrayList.get(position).getMenuName());
+        holder.menuNameText.setText(arrayList.get(position).getMenuName());
         holder.tv_price.setText(arrayList.get(position).getPrice());
 
         imgName = arrayList.get(position).getProfile();
@@ -101,7 +109,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     public class MenuViewHolder extends RecyclerView.ViewHolder {
         Context vh_context = context;
         ImageView iv_profile;
-        TextView cb_menuName;
+        CheckBox cb_menuName;
         TextView tv_price;
 
         public TextView menuNameText;
@@ -109,7 +117,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         public MenuViewHolder(@NonNull View itemView) {
             super(itemView);
             iv_profile = itemView.findViewById(R.id.profile);
-            cb_menuName = itemView.findViewById(R.id.menuNameText);
+            cb_menuName = itemView.findViewById(R.id.menuName);
             tv_price = itemView.findViewById(R.id.price);
             menuNameText = itemView.findViewById(R.id.menuNameText);
 
@@ -119,9 +127,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
                     onClickListener.textViewOnclick(view, getAdapterPosition());
                 }
             });
-
-        }
-
 
             this.cb_menuName.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -137,5 +142,20 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
             mCallback.onClick(menu_selected);
         }
+
+
+//            this.cb_menuName.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    if(cb_menuName.isChecked()){
+//                        int pos = getAdapterPosition();
+//                        Log.d("check", "position " + pos);
+//                        if(pos!=RecyclerView.NO_POSITION)
+//                            menu_selected.add(pos);
+//                    }
+//                }
+//            });
+
+            //mCallback.onClick(menu_selected);
     }
 }
