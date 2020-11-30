@@ -42,7 +42,9 @@ import com.gun0912.tedpermission.TedPermission;
 import com.kftc.openbankingsample2.R;
 import com.kftc.openbankingsample2.biz.center_auth.AbstractCenterAuthMainFragment;
 import com.kftc.openbankingsample2.biz.center_auth.CenterAuthHomeFragment;
+import com.kftc.openbankingsample2.biz.center_auth.seller.menu_check.MenuCheckFragment;
 import com.kftc.openbankingsample2.biz.center_auth.seller.menu_list.MenuFragment;
+import com.kftc.openbankingsample2.biz.center_auth.seller.order_list.ForOrderListFragment;
 
 import java.io.File;
 import java.io.IOException;
@@ -348,12 +350,12 @@ public class MenuInfoFragment extends AbstractCenterAuthMainFragment {
                     uploadTask.addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                        showAlert("실패", "스토리지 업로드 실패");
+
                         }
                     }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        showAlert("성공", "스토리지 업로드 성공");
+
                     }});
                 }
             });
@@ -389,6 +391,6 @@ public class MenuInfoFragment extends AbstractCenterAuthMainFragment {
         }
 
         showAlert("알림", "메뉴 등록 완료");
-        startFragment(CenterAuthHomeFragment.class, args, R.string.fragment_id_center_auth);
+        startFragment(ForOrderListFragment.class, args, R.string.fragment_menu);
     }
 }

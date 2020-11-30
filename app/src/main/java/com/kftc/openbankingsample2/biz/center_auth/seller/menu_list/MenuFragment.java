@@ -82,7 +82,7 @@ public class MenuFragment extends AbstractCenterAuthMainFragment implements OnIt
         recyclerView.setLayoutManager(layoutManager);
         arrayList = new ArrayList<>(); // User 객체를 담을 어레이 리스트 (어댑터쪽으로)
 
-        Button btn_delete=(Button) view.findViewById(R.id.button_delete);
+        Button btn_delete=(Button) view.findViewById(R.id.btnRemove);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("market_info");
@@ -200,7 +200,7 @@ public class MenuFragment extends AbstractCenterAuthMainFragment implements OnIt
                 ad.show();
             }
         });
-        view.findViewById(R.id.button_add).setOnClickListener(v->editArgs("R",""));
+        view.findViewById(R.id.btnAdd).setOnClickListener(v->editArgs("R",""));
         return view;
     }
 

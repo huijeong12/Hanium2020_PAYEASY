@@ -7,7 +7,7 @@
     <!--서브타이틀-->
     <LinearLayout android:id="@+id/llSubTitle" style="@style/SubTitleLayout">
         <TextView android:id="@+id/tvSubTitle" style="@style/SubTitleText"
-            android:text="선택화면\n- 센터인증 또는 자체인증 선택"/>
+            android:text="선택화면\n- 판매자 또는 소비자 선택"/>
     </LinearLayout>
 
     <!--메인-->

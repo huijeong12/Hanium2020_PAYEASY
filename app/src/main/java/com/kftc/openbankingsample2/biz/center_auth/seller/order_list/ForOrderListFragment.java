@@ -134,8 +134,6 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
                     TextView sellerName =view.findViewById(R.id.sellerInfo);
                     TextView marketName =view.findViewById(R.id.marketInfo);
 
-
-
                     String market = "0";
                     String seller = "0";
 
@@ -147,11 +145,8 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
                         market =datasnapshot.child("Market").getValue().toString();
                     }
 
-
-
                     sellerName.setText(seller+" 사용자님");
                     marketName.setText(market+" 마켓");
-
 
             }
 

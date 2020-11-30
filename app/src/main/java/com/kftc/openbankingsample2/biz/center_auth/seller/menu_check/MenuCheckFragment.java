@@ -62,7 +62,6 @@ public class MenuCheckFragment extends AbstractCenterAuthMainFragment {
         context = getContext();
         args = getArguments();
         menuData = args.getString("menuForArgs");
-        Log.d("data: ", menuData);
 
         if (args == null) args = new Bundle();
 
