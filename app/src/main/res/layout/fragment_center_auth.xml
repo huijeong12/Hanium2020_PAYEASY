@@ -38,18 +38,6 @@
                 android:layout_marginTop="20dp"
                 android:text="기존 계좌확인 후 토큰발급" />
 
-            <Button
-                android:id="@+id/btnAuthToken"
-                style="@style/Button01"
-                android:layout_width="280dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                android:text="OOB 토큰발급(2-legged)" />
-
         </LinearLayout>
     </ScrollView>
 

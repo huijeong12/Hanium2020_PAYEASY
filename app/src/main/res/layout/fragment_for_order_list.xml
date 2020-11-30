@@ -1,0 +1,131 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--서브타이틀-->
+    <LinearLayout android:id="@+id/llSubTitle" style="@style/SubTitleLayout">
+        <TextView android:id="@+id/tvSubTitle" style="@style/SubTitleText"
+            android:text="판매자 메인화면\n -판매할 품목과 수량 선택"/>
+    </LinearLayout>
+
+    <!--메인-->
+    <ScrollView
+        android:id="@+id/svMainScroll"
+        style="@style/MainScrollView">
+
+        <LinearLayout
+            android:id="@+id/llMainLayout"
+            style="@style/MainLayout">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp">
+
+                <TableRow>
+
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/sellerInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center"
+                        android:text="XXX 사용자님"
+                        android:textColor="@color/md_black_1000"
+                        android:textSize="21sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/marketInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="25dp"
+                        android:gravity="center"
+                        android:text="XXX 마켓"
+                        android:textColor="@color/md_black_1000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/moneyInfo"
+                    style="@style/FormValue02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:text="매출: XXX원"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    />
+
+
+
+            </TableRow>
+
+
+        </TableLayout>
+
+
+            <Button
+                android:id="@+id/btnChangemenuPage"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginRight="8dp"
+                android:text="나의 메뉴 확인하기"
+                android:textSize="18sp" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
+
+            </RelativeLayout>
+
+
+            <Button
+                android:id="@+id/makeQRcode"
+                style="@style/BottomQRButton"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="QR코드\n 생성"
+                android:layout_marginBottom="30dp"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
