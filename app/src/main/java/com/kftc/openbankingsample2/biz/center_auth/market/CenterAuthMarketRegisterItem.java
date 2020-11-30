@@ -45,7 +45,9 @@ import com.kftc.openbankingsample2.biz.center_auth.CenterAuthHomeFragment;
 import com.kftc.openbankingsample2.biz.main.MenuFragment;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -319,8 +321,8 @@ public class CenterAuthMarketRegisterItem extends AbstractCenterAuthMainFragment
             String filename = etItemName.getText().toString() + ".jpg";
             StorageReference newImgStorageRef = storageRef.child(filename);
 
-            UploadTask uploadTask = newImgStorageRef.putFile(imgUri);
-            uploadTask.addOnFailureListener(new OnFailureListener() {
+            Log.d("imguri: ", imgUri.toString());
+            UploadTask uploadTask = (UploadTask) newImgStorageRef.putFile(imgUri).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     showAlert("실패", "스토리지 업로드 실패");
@@ -342,22 +344,22 @@ public class CenterAuthMarketRegisterItem extends AbstractCenterAuthMainFragment
             oldImgStorageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    Uri oldimgUri = uri;
-                    Log.d("in old uri", oldimgUri.toString());
-                    UploadTask uploadTask = newImgStorageRef.putFile(oldimgUri);
-                    uploadTask.addOnFailureListener(new OnFailureListener() {
+                    String imguri = uri.toString();
+                    Log.d("imguri: ", imguri);
+                    UploadTask uploadTask = (UploadTask) newImgStorageRef.putFile(uri).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                        showAlert("실패", "스토리지 업로드 실패");
+                            showAlert("실패", "스토리지 업로드 실패");
                         }
                     }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        showAlert("성공", "스토리지 업로드 성공");
-                    }});
+                            showAlert("성공", "스토리지 업로드 성공");
+                        }
+                    });
+
                 }
             });
-
         }
 
         menuInfoIntoDatabase(etItemName.getText().toString());

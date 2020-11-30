@@ -152,35 +152,6 @@ public class MenuFragment extends AbstractCenterAuthMainFragment {
         args.putStringArray("key", strings);
         startFragment(CenterAuthMarketRegisterItem.class, args, R.string.fragment_id_register_item);
 
-//        DatabaseReference ref = database.getReference().child("market_info").child("hanium2020").child("numberOfItem");
-//
-//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                items = dataSnapshot.getValue().toString();
-//                String[] strings = new String[2];
-//                strings[0] = isEditOrRegister;
-//
-//                if (isEditOrRegister == "E") {
-//                    Random random = new Random();
-//                    items = Integer.toString(random.nextInt(Integer.valueOf(items)) + 1);
-//
-//                }
-//
-//                else {
-//                    items = Integer.toString(Integer.valueOf(items) + 1);
-//                }
-//                strings[1] = items;
-//
-//                args.putStringArray("key", strings);
-//                startFragment(CenterAuthMarketRegisterItem.class, args, R.string.fragment_id_register_item);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
         };
 
 }

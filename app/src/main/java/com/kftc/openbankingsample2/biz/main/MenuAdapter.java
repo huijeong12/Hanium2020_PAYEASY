@@ -63,7 +63,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     @Override
     public void onBindViewHolder(@NonNull MenuAdapter.MenuViewHolder holder, int position) {
 
-        holder.cb_menuName.setText(arrayList.get(position).getMenuName());
+        holder.menuNameText.setText(arrayList.get(position).getMenuName());
         holder.tv_price.setText(arrayList.get(position).getPrice());
 
         imgName = arrayList.get(position).getProfile();
@@ -94,7 +94,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     public class MenuViewHolder extends RecyclerView.ViewHolder {
         Context vh_context = context;
         ImageView iv_profile;
-        TextView cb_menuName;
+        CheckBox cb_menuName;
         TextView tv_price;
 
         public TextView menuNameText;
@@ -102,7 +102,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         public MenuViewHolder(@NonNull View itemView) {
             super(itemView);
             iv_profile = itemView.findViewById(R.id.profile);
-            cb_menuName = itemView.findViewById(R.id.menuNameText);
+            cb_menuName = itemView.findViewById(R.id.menuName);
             tv_price = itemView.findViewById(R.id.price);
             menuNameText = itemView.findViewById(R.id.menuNameText);
 
