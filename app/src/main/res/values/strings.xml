@@ -14,6 +14,7 @@
     <string name="fragment_id_account_list" translatable="false">등록 계좌</string>
     <string name="fragment_id_transfer_withdraw_check" translatable="false">결제 정보 확인</string>
     <string name="fragment_id_transfer_scan_qr" translatable="false">QR코드 스캔</string>
+    <string name="fragment_id_transfer_withdraw_result" translatable="false">결제 완료</string>
 
     <string name="fragment_id_navi" translatable="false">navigation</string>
     <string name="fragment_id_main" translatable="false">오픈뱅킹샘플</string>
