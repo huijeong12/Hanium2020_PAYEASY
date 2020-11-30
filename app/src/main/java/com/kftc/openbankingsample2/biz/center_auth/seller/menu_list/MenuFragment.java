@@ -170,13 +170,13 @@ public class MenuFragment extends AbstractCenterAuthMainFragment implements OnIt
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
                                                     Log.d("storage", "delete success");
-                                                    Toast.makeText(getContext(), "삭제 완료", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(getContext(), "사진 삭제 완료", Toast.LENGTH_LONG).show();
                                                 }
                                             }).addOnFailureListener(new OnFailureListener() {
                                                 @Override
                                                 public void onFailure(@NonNull Exception e) {
                                                     Log.d("storage", "delete fail");
-                                                    Toast.makeText(getContext(), "삭제 실패", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(getContext(), "사진 삭제 실패", Toast.LENGTH_LONG).show();
                                                 }
                                             });
                                         }
