@@ -23,6 +23,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.kftc.openbankingsample2.biz.ForOrderListAdapter;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
 
@@ -32,11 +33,18 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     String imgName;
 
     FirebaseStorage storage;
-    StorageReference storageRef ;
+    StorageReference storageRef;
 
-    public MenuAdapter(ArrayList<menuList> arrayList, Context context) {
+    public MenuAdapter.MyAdapterListener onClickListener;
+
+
+    public interface MyAdapterListener {
+        void textViewOnclick(View v, int position);
+    }
+
+    public MenuAdapter(ArrayList<menuList> arrayList, Context context, MenuAdapter.MyAdapterListener listener) {
         this.arrayList = arrayList;
-        //this.context = context;
+        onClickListener=listener;
     }
 
     @NonNull
@@ -86,15 +94,27 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     public class MenuViewHolder extends RecyclerView.ViewHolder {
         Context vh_context = context;
         ImageView iv_profile;
-        CheckBox cb_menuName;
+        TextView cb_menuName;
         TextView tv_price;
+
+        public TextView menuNameText;
 
         public MenuViewHolder(@NonNull View itemView) {
             super(itemView);
             iv_profile = itemView.findViewById(R.id.profile);
-            cb_menuName = itemView.findViewById(R.id.menuName);
+            cb_menuName = itemView.findViewById(R.id.menuNameText);
             tv_price = itemView.findViewById(R.id.price);
+            menuNameText = itemView.findViewById(R.id.menuNameText);
+
+            menuNameText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onClickListener.textViewOnclick(view, getAdapterPosition());
+                }
+            });
+
         }
+
 
 
     }

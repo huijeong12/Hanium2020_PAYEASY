@@ -15,7 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.kftc.openbankingsample2.R;
+import com.kftc.openbankingsample2.biz.ForOrderListAdapter;
 import com.kftc.openbankingsample2.biz.center_auth.AbstractCenterAuthMainFragment;
 import com.kftc.openbankingsample2.biz.center_auth.market.CenterAuthMarketRegisterItem;
 
@@ -44,6 +47,7 @@ public class MenuFragment extends AbstractCenterAuthMainFragment {
     private Bundle args;
 
     private View view;
+
 
     public MenuFragment() {
         // Required empty public constructor
@@ -107,7 +111,22 @@ public class MenuFragment extends AbstractCenterAuthMainFragment {
                 Log.w("pay-easy", "Failed to read value.", error.toException());
             }
         });
-        adapter = new MenuAdapter(arrayList, getContext());
+        //adapter = new MenuAdapter(arrayList, getContext());
+
+        adapter = new MenuAdapter(arrayList, getContext(), new MenuAdapter.MyAdapterListener() {
+            @Override
+            public void textViewOnclick(View v, int position) {
+                Log.d("ming", Integer.toString(position) + "textView on clicked");
+                TextView textView;
+                View menuList = recyclerView.getLayoutManager().findViewByPosition(position);
+                textView = menuList.findViewById(R.id.menuNameText);
+                String menuTextName = textView.getText().toString();
+                Log.d("menuNameText", menuTextName);
+                editArgs("E", menuTextName);
+                //startFragment();
+            }
+
+        });
         recyclerView.setAdapter(adapter); // 리사이클러뷰에 어댑터 연결
 
         btn_delete.setOnClickListener(new Button.OnClickListener() {
@@ -117,44 +136,51 @@ public class MenuFragment extends AbstractCenterAuthMainFragment {
             }
         });
 
-        view.findViewById(R.id.button_add).setOnClickListener(v->editArgs("R"));
+        view.findViewById(R.id.button_add).setOnClickListener(v->editArgs("R", ""));
 
         return view;
     }
 
 
-    void editArgs(String isEditOrRegister) {
+    void editArgs(String isEditOrRegister, String positionName) {
 
-        DatabaseReference ref = database.getReference().child("market_info").child("hanium2020").child("numberOfItem");
+        String[] strings = new String[2];
+        strings[0] = isEditOrRegister;
 
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        strings[1] = positionName;
 
-                items = dataSnapshot.getValue().toString();
-                String[] strings = new String[2];
-                strings[0] = isEditOrRegister;
+        args.putStringArray("key", strings);
+        startFragment(CenterAuthMarketRegisterItem.class, args, R.string.fragment_id_register_item);
 
-                if (isEditOrRegister == "E") {
-                    Random random = new Random();
-                    items = Integer.toString(random.nextInt(Integer.valueOf(items)) + 1);
-                }
-
-                else {
-                    items = Integer.toString(Integer.valueOf(items) + 1);
-                }
-                strings[1] = items;
-
-                args.putStringArray("key", strings);
-                startFragment(CenterAuthMarketRegisterItem.class, args, R.string.fragment_id_register_item);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
+//        DatabaseReference ref = database.getReference().child("market_info").child("hanium2020").child("numberOfItem");
+//
+//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                items = dataSnapshot.getValue().toString();
+//                String[] strings = new String[2];
+//                strings[0] = isEditOrRegister;
+//
+//                if (isEditOrRegister == "E") {
+//                    Random random = new Random();
+//                    items = Integer.toString(random.nextInt(Integer.valueOf(items)) + 1);
+//
+//                }
+//
+//                else {
+//                    items = Integer.toString(Integer.valueOf(items) + 1);
+//                }
+//                strings[1] = items;
+//
+//                args.putStringArray("key", strings);
+//                startFragment(CenterAuthMarketRegisterItem.class, args, R.string.fragment_id_register_item);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+        };
 
 }

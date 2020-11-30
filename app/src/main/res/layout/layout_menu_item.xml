@@ -14,21 +14,32 @@
         android:layout_height="103dp"
         android:layout_marginTop="10dp">
 
+        <CheckBox
+            android:id="@+id/menuName"
+            android:layout_width="30dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />
+
         <ImageView
             android:id="@+id/profile"
             android:layout_width="130dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:scaleType="centerCrop"
         />
 
-        <CheckBox
-            android:id="@+id/menuName"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
 
-            android:text="CheckBox" />
+        <TextView
+            android:id="@+id/menuNameText"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:text="Menu Name"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            />
 
         <TextView
             android:id="@+id/price"
