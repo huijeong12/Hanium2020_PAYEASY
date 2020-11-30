@@ -10,7 +10,6 @@ public interface CenterAuthConst {
     String CENTER_AUTH_CLIENT_ACCESS_TOKEN = "CENTER_AUTH_CLIENT_ACCESS_TOKEN";
     String CENTER_AUTH_CLIENT_USER_SEQ_NUM = "CENTER_AUTH_CLIENT_USER_SEQ_NUM";
 
-
     // 설정 화면에서 저장되는 환경값
     // ex) 리얼이면 CLIENT_ID_REAL, 테스트이면 CLIENT_ID_TEST 로 저장된다.
     // 기본값은 XXXXSettingFragment.class 에서 설정하고, 앱구동시 AppData.class 의 PreferenceManager.setDefaultValues 에 의해 불려진다.

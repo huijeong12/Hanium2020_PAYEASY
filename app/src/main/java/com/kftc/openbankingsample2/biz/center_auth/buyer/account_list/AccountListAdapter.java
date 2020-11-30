@@ -21,8 +21,10 @@ import com.kftc.openbankingsample2.R;
 import com.kftc.openbankingsample2.biz.center_auth.CenterAuthConst;
 import com.kftc.openbankingsample2.biz.center_auth.buyer.transfer_withdraw.TransferWithdrawCheck;
 import com.kftc.openbankingsample2.biz.center_auth.buyer.transfer_withdraw.TransferWithdrawScanQR;
+import com.kftc.openbankingsample2.biz.center_auth.util.CenterAuthUtils;
 import com.kftc.openbankingsample2.biz.main.MainActivity;
 import com.kftc.openbankingsample2.common.data.BankAccount;
+import com.kftc.openbankingsample2.common.util.Utils;
 import com.kftc.openbankingsample2.common.util.view.KmDialogDefault;
 import com.kftc.openbankingsample2.common.util.view.recyclerview.KmRecyclerViewArrayAdapter;
 import com.kftc.openbankingsample2.common.util.view.recyclerview.KmRecyclerViewHolder;
@@ -73,7 +75,10 @@ public class AccountListAdapter extends KmRecyclerViewArrayAdapter<BankAccount> 
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String[] strings = { item.getAccount_type(), item.getAccount_num(), item.getFintech_use_num(),
+                                String accountNum = CenterAuthUtils.getSavedValueFromSetting(CenterAuthConst.CENTER_AUTH_CONTRACT_WITHDRAW_ACCOUNT_NUM);
+                                Utils.saveData(CenterAuthConst.CENTER_AUTH_CONTRACT_WITHDRAW_ACCOUNT_NUM, accountNum);
+
+                                String[] strings = {"N", accountNum, item.getFintech_use_num(),
                                     item.getAccount_holder_name(), item.getFintech_use_num(), item.getPayer_num(), "TR"};
                                 args.putStringArray("buyer_info", strings);
                                 startFragment(TransferWithdrawScanQR.class, args, R.string.fragment_id_transfer_scan_qr);

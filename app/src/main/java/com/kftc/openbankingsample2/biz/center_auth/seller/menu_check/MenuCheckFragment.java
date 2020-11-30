@@ -170,7 +170,7 @@ public class MenuCheckFragment extends AbstractCenterAuthMainFragment {
 
             int cntInt = Integer.parseInt(cntString);
 
-            priceString = priceString.substring(0, priceString.length() - 2);
+            priceString = priceString.substring(0, priceString.length() - 1);
 
             int priceInt = Integer.parseInt(priceString);
 
