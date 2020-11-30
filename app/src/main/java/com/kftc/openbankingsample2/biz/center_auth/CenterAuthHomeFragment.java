@@ -17,8 +17,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.kftc.openbankingsample2.R;
 import com.kftc.openbankingsample2.biz.center_auth.seller.menu_check.MenuCheckFragment;
 import com.kftc.openbankingsample2.biz.center_auth.seller.order_list.ForOrderListFragment;
-import com.kftc.openbankingsample2.biz.center_auth.api.CenterAuthAPIFragment;
-import com.kftc.openbankingsample2.biz.center_auth.auth.CenterAuthFragment;
 import com.kftc.openbankingsample2.biz.center_auth.seller.menu_info.MenuInfoFragment;
 import com.kftc.openbankingsample2.biz.main.HomeFragment;
 import com.kftc.openbankingsample2.biz.center_auth.seller.menu_list.MenuFragment;
@@ -62,11 +60,6 @@ public class CenterAuthHomeFragment extends AbstractCenterAuthMainFragment {
 
     private void initView() {
 
-        // 계좌등록
-        view.findViewById(R.id.btnAuthToken).setOnClickListener(v -> startFragment(CenterAuthFragment.class, args, R.string.fragment_id_center_auth));
-
-        // API 거래
-        view.findViewById(R.id.btnAPICallMenu).setOnClickListener(v -> startFragment(CenterAuthAPIFragment.class, args, R.string.fragment_id_center_api_call));
 
         // 메뉴 추가 및 수정
         view.findViewById(R.id.btnRegisterItem).setOnClickListener(v -> editArgs("R"));

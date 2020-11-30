@@ -169,6 +169,9 @@ public class MenuCheckFragment extends AbstractCenterAuthMainFragment {
             String priceString = textView.getText().toString();
 
             int cntInt = Integer.parseInt(cntString);
+
+            priceString = priceString.substring(0, priceString.length() - 2);
+
             int priceInt = Integer.parseInt(priceString);
 
             total_price += cntInt*priceInt;

@@ -10,8 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.kftc.openbankingsample2.R;
-import com.kftc.openbankingsample2.biz.center_auth.auth.authorize.CenterAuthAuthorizeFragment;
-import com.kftc.openbankingsample2.biz.center_auth.auth.authorize_account.CenterAuthAuthorizeAccountFragment;
 
 public class NaviAuthFragment extends AbstractNaviFragment {
 
@@ -42,14 +40,6 @@ public class NaviAuthFragment extends AbstractNaviFragment {
 
     void initView() {
 
-        view.findViewById(R.id.llAuthorize).setOnClickListener(v -> {
-            activity.closeNavi();
-            activity.startFragment(CenterAuthAuthorizeFragment.class, args, R.string.fragment_id_center);
-        });
 
-        view.findViewById(R.id.llAuthorizeAccount).setOnClickListener(v -> {
-            activity.closeNavi();
-            activity.startFragment(CenterAuthAuthorizeAccountFragment.class, args, R.string.fragment_id_auth_authorize);
-        });
     }
 }

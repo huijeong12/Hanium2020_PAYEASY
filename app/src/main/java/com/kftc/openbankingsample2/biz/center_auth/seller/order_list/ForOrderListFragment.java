@@ -57,6 +57,66 @@ public class ForOrderListFragment extends AbstractCenterAuthMainFragment {
         args = getArguments();
 
         if (args == null) args = new Bundle();
+
+        FirebaseDatabase database =FirebaseDatabase.getInstance();
+        DatabaseReference myRef=database.getReference("seller_info");
+
+        myRef.child("hanium2020").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+
+
+                TextView sellerName =view.findViewById(R.id.sellerInfo);
+                TextView marketName =view.findViewById(R.id.marketInfo);
+
+
+
+                String market = "0";
+                String seller = "0";
+
+                if (datasnapshot.child("Name").getValue() !=null){
+                    seller = datasnapshot.child("Name").getValue().toString();
+                }
+
+                if(datasnapshot.child("Market").getValue() != null){
+                    market =datasnapshot.child("Market").getValue().toString();
+                }
+
+
+
+                sellerName.setText(seller+" 사용자님");
+                marketName.setText(market+" 마켓");
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w("pay-easy", "Failed to read value.", error.toException());
+            }
+        });
+
+
+        database =FirebaseDatabase.getInstance();
+        myRef=database.getReference("market_info");
+
+        myRef.child("hanium2020").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                TextView money =view.findViewById(R.id.moneyInfo);
+                String sales ="0";
+
+                if(datasnapshot.child("Sales").getValue() != null){
+                    sales =datasnapshot.child("Sales").getValue().toString();
+                }
+                money.setText("매출 :"+sales +"원");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w("pay-easy", "Failed to read value.", error.toException());
+            }
+        });
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
