@@ -106,7 +106,7 @@ public class MenuFragment extends AbstractCenterAuthMainFragment implements OnIt
                     }
 
                     menus.setMenuName(name);
-                    menus.setPrice(price);
+                    menus.setPrice(price+"원");
                     menus.setProfile(photo);
 
                     arrayList.add(menus);
